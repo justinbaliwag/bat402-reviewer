@@ -272,7 +272,7 @@
 
     </section>
 
-    <!-- ========================================================================= -->
+<!-- ========================================================================= -->
     <!-- TAB 2: VERBATIM PART I CODE COMPLETION DRILL (P-1, P-2, P-3) -->
     <!-- ========================================================================= -->
     <section id="view-code-drill" class="hidden space-y-6">
@@ -311,24 +311,24 @@
             <span class="px-2 py-0.5 rounded bg-indigo-200 text-indigo-900 font-bold">dorm_power.csv | 150 rows</span>
           </div>
           <p>
-            The university housing office wants to predict each dormitory room's monthly electricity bill so it can warn residents early about high usage and plan the utilities budget[cite: 10].
+            The university housing office wants to predict each dormitory room's monthly electricity bill so it can warn residents early about high usage and plan the utilities budget.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white p-3 rounded-xl border border-indigo-100">
               <span class="font-bold text-indigo-900 block mb-1">Dataset Variables:</span>
               <ul class="list-disc list-inside space-y-0.5 text-slate-600">
-                <li><code class="code-font text-indigo-700">monthly_bill</code>: Electricity bill for the month (PHP)[cite: 10]</li>
-                <li><code class="code-font text-indigo-700">num_occupants</code>: Number of residents in the room[cite: 10]</li>
-                <li><code class="code-font text-indigo-700">has_aircon</code>: 1 if the room has an air conditioner, 0 if not[cite: 10]</li>
-                <li><code class="code-font text-indigo-700">hours_used</code>: Average hours per day the main appliances are in use[cite: 10]</li>
+                <li><code class="code-font text-indigo-700">monthly_bill</code>: Electricity bill for the month (PHP)</li>
+                <li><code class="code-font text-indigo-700">num_occupants</code>: Number of residents in the room</li>
+                <li><code class="code-font text-indigo-700">has_aircon</code>: 1 if the room has an air conditioner, 0 if not</li>
+                <li><code class="code-font text-indigo-700">hours_used</code>: Average hours per day the main appliances are in use</li>
               </ul>
             </div>
             <div class="bg-white p-3 rounded-xl border border-indigo-100">
               <span class="font-bold text-indigo-900 block mb-1">Advisory Rules for the Housing Office:</span>
               <ul class="space-y-1 text-slate-600">
-                <li>&bull; <strong class="text-rose-600">PHP 2,500 and above</strong>: High usage &rarr; send an energy-saving notice[cite: 10]</li>
-                <li>&bull; <strong class="text-amber-600">PHP 1,500 to below PHP 2,500</strong>: Moderate usage &rarr; include a reminder in the monthly bulletin[cite: 10]</li>
-                <li>&bull; <strong class="text-emerald-600">Below PHP 1,500</strong>: Normal usage &rarr; no action needed[cite: 10]</li>
+                <li>&bull; <strong class="text-rose-600">PHP 2,500 and above</strong>: High usage &rarr; send an energy-saving notice</li>
+                <li>&bull; <strong class="text-amber-600">PHP 1,500 to below PHP 2,500</strong>: Moderate usage &rarr; include a reminder in the monthly bulletin</li>
+                <li>&bull; <strong class="text-emerald-600">Below PHP 1,500</strong>: Normal usage &rarr; no action needed</li>
               </ul>
             </div>
           </div>
@@ -484,6 +484,69 @@
           </div>
           <div class="text-slate-400">cat("Predicted Bill (3 occupants, with aircon, 8 hours): PHP", round(pred_A, 0), "\n")</div>
 
+          <!-- Full Completed Script Box for P-1 -->
+          <div class="pt-4 border-t border-slate-800">
+            <button onclick="toggleFullScript('p1')" class="w-full py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg font-sans font-medium text-xs transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-code"></i> Show Complete P-1 Script with Answers
+            </button>
+            <div id="full-script-p1" class="hidden mt-3 p-4 bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto text-[11px] leading-relaxed">
+              <div class="flex justify-between items-center pb-2 mb-2 border-b border-slate-800">
+                <span class="text-indigo-400 font-sans font-semibold">P-1 Complete Completed Script (Blanks 1–10 Filled)</span>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('raw-code-p1').innerText)" class="text-slate-400 hover:text-white font-sans text-[10px]">
+                  <i class="fa-regular fa-copy mr-1"></i> Copy Code
+                </button>
+              </div>
+              <pre id="raw-code-p1" class="code-font text-slate-300"># STEP 1: Load the dataset -----------------------------------------
+# Load the dataset into a data frame named power_data
+<span class="text-emerald-400 font-bold">power_data &lt;- read.csv("dorm_power.csv")</span>
+
+# STEP 2: Split the dataset into training and test sets ------------
+set.seed(42)
+# Sample 80% of row numbers from power_data and store in train_rows
+<span class="text-emerald-400 font-bold">train_rows &lt;- sample(1:nrow(power_data), size = round(0.80 * nrow(power_data)))</span>
+
+# Create the training set named train using train_rows
+<span class="text-emerald-400 font-bold">train &lt;- power_data[train_rows, ]</span>
+
+# Create the test set named test using the remaining rows
+<span class="text-emerald-400 font-bold">test &lt;- power_data[-train_rows, ]</span>
+
+cat("Training rows:", nrow(train), "\n") # Expected: 120
+cat("Test rows:    ", nrow(test), "\n")  # Expected: 30
+
+# STEP 3: Build the regression model -------------------------------
+# Build a multiple regression model named model_bill
+# Predict monthly_bill using num_occupants, has_aircon, and hours_used
+# Train on the training set only
+<span class="text-emerald-400 font-bold">model_bill &lt;- lm(monthly_bill ~ num_occupants + has_aircon + hours_used, data = train)</span>
+
+# Display the full model summary
+<span class="text-emerald-400 font-bold">summary(model_bill)</span>
+
+# STEP 4: Evaluate the model on the test set -----------------------
+# Generate bill predictions from model_bill on the test set
+# Store the predictions in bill_predictions
+<span class="text-emerald-400 font-bold">bill_predictions &lt;- predict(model_bill, newdata = test)</span>
+
+errors &lt;- test$monthly_bill - bill_predictions
+# Compute RMSE: square root of the mean of squared errors
+# Store in rmse_bill
+<span class="text-emerald-400 font-bold">rmse_bill &lt;- sqrt(mean(errors^2))</span>
+cat("RMSE: PHP", round(rmse_bill, 2), "\n")
+
+# STEP 5: Predict the bill for a specific room ---------------------
+# Scenario A: a room with 3 occupants, WITH an aircon,
+# using appliances 8 hours a day
+# Create a data frame named scenario_A
+<span class="text-emerald-400 font-bold">scenario_A &lt;- data.frame(num_occupants = 3, has_aircon = 1, hours_used = 8)</span>
+
+# Use model_bill to predict the bill for scenario_A
+# Store the result in pred_A
+<span class="text-emerald-400 font-bold">pred_A &lt;- predict(model_bill, newdata = scenario_A)</span>
+cat("Predicted Bill (3 occupants, with aircon, 8 hours): PHP", round(pred_A, 0), "\n")</pre>
+            </div>
+          </div>
+
         </div>
       </div>
 
@@ -497,24 +560,24 @@
             <span class="px-2 py-0.5 rounded bg-purple-200 text-purple-900 font-bold">internet_renewal.csv | 200 rows</span>
           </div>
           <p>
-            A campus internet provider wants to identify subscribers who are likely to cancel at the end of their contract, so its customer service team can reach out with retention offers before they leave[cite: 11].
+            A campus internet provider wants to identify subscribers who are likely to cancel at the end of their contract, so its customer service team can reach out with retention offers before they leave.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white p-3 rounded-xl border border-purple-100">
               <span class="font-bold text-purple-900 block mb-1">Dataset Variables:</span>
               <ul class="list-disc list-inside space-y-0.5 text-slate-600">
-                <li><code class="code-font text-purple-700">will_renew</code>: Whether the subscriber renewed (1) or cancelled (0)[cite: 11]</li>
-                <li><code class="code-font text-purple-700">monthly_usage_gb</code>: Average data used per month (GB)[cite: 11]</li>
-                <li><code class="code-font text-purple-700">num_complaints</code>: Number of complaints filed during the contract[cite: 11]</li>
-                <li><code class="code-font text-purple-700">months_subscribed</code>: Number of months the subscriber has been with the provider[cite: 11]</li>
-                <li><code class="code-font text-purple-700">avg_speed_mbps</code>: Average measured connection speed (Mbps)[cite: 11]</li>
+                <li><code class="code-font text-purple-700">will_renew</code>: Whether the subscriber renewed (1) or cancelled (0)</li>
+                <li><code class="code-font text-purple-700">monthly_usage_gb</code>: Average data used per month (GB)</li>
+                <li><code class="code-font text-purple-700">num_complaints</code>: Number of complaints filed during the contract</li>
+                <li><code class="code-font text-purple-700">months_subscribed</code>: Number of months the subscriber has been with the provider</li>
+                <li><code class="code-font text-purple-700">avg_speed_mbps</code>: Average measured connection speed (Mbps)</li>
               </ul>
             </div>
             <div class="bg-white p-3 rounded-xl border border-purple-100">
               <span class="font-bold text-purple-900 block mb-1">Advisory Rules for Customer Service:</span>
               <ul class="space-y-1 text-slate-600">
-                <li>&bull; <strong class="text-rose-600">Will CANCEL (0)</strong>: Call the subscriber and offer a loyalty discount[cite: 11]</li>
-                <li>&bull; <strong class="text-emerald-600">Will RENEW (1)</strong>: Send the standard renewal reminder[cite: 11]</li>
+                <li>&bull; <strong class="text-rose-600">Will CANCEL (0)</strong>: Call the subscriber and offer a loyalty discount</li>
+                <li>&bull; <strong class="text-emerald-600">Will RENEW (1)</strong>: Send the standard renewal reminder</li>
               </ul>
             </div>
           </div>
@@ -681,7 +744,77 @@
             Predicted &nbsp;0 &nbsp;1<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 13 &nbsp;5<br>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;3 19<br>
-            Accuracy: 80% | Precision: 86.4% | Recall: 79.2%[cite: 13]
+            Accuracy: 80% | Precision: 86.4% | Recall: 79.2%
+          </div>
+
+          <!-- Full Completed Script Box for P-2 -->
+          <div class="pt-4 border-t border-slate-800">
+            <button onclick="toggleFullScript('p2')" class="w-full py-2 bg-purple-600 hover:bg-purple-500 text-white rounded-lg font-sans font-medium text-xs transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-code"></i> Show Complete P-2 Script with Answers
+            </button>
+            <div id="full-script-p2" class="hidden mt-3 p-4 bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto text-[11px] leading-relaxed">
+              <div class="flex justify-between items-center pb-2 mb-2 border-b border-slate-800">
+                <span class="text-purple-400 font-sans font-semibold">P-2 Complete Completed Script (Blanks 11–20 Filled)</span>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('raw-code-p2').innerText)" class="text-slate-400 hover:text-white font-sans text-[10px]">
+                  <i class="fa-regular fa-copy mr-1"></i> Copy Code
+                </button>
+              </div>
+              <pre id="raw-code-p2" class="code-font text-slate-300"># STEP 1: Load the required libraries ----------------------------
+# Load the library needed to build the decision tree
+<span class="text-emerald-400 font-bold">library(rpart)</span>
+
+# Load the library needed to draw the decision tree diagram
+<span class="text-emerald-400 font-bold">library(rpart.plot)</span>
+
+# STEP 2: Load and prepare the dataset ---------------------------
+df &lt;- read.csv("internet_renewal.csv")
+# Convert will_renew to a factor (required for classification)
+<span class="text-emerald-400 font-bold">df$will_renew &lt;- as.factor(df$will_renew)</span>
+
+# STEP 3: Split into training and test sets ----------------------
+set.seed(42)
+# Sample 80% of row numbers from df and store in train_rows
+<span class="text-emerald-400 font-bold">train_rows &lt;- sample(1:nrow(df), size = round(0.80 * nrow(df)))</span>
+train &lt;- df[train_rows, ]
+test  &lt;- df[-train_rows, ]
+
+# STEP 4: Build the decision tree classifier ---------------------
+# Build a decision tree named tree_model
+# Predict will_renew using all four predictors:
+# monthly_usage_gb, num_complaints, months_subscribed, avg_speed_mbps
+# Use method = "class" and limit depth to 3 levels
+<span class="text-emerald-400 font-bold">tree_model &lt;- rpart(will_renew ~ monthly_usage_gb + num_complaints + months_subscribed + avg_speed_mbps, data = train, method = "class", control = rpart.control(maxdepth = 3))</span>
+rpart.plot(tree_model, type = 2, extra = 104, main = "Subscription Renewal Decision Tree")
+
+# STEP 5: Predictions and confusion matrix -----------------------
+# Generate class predictions from tree_model on the test set
+# Store in pred_class
+<span class="text-emerald-400 font-bold">pred_class &lt;- predict(tree_model, newdata = test, type = "class")</span>
+
+# Build the confusion matrix named conf_matrix
+# Rows = Predicted, Columns = Actual
+<span class="text-emerald-400 font-bold">conf_matrix &lt;- table(Predicted = pred_class, Actual = test$will_renew)</span>
+print(conf_matrix)
+
+# STEP 6: Compute classification metrics -------------------------
+TN &lt;- conf_matrix[1, 1]
+FP &lt;- conf_matrix[2, 1]
+FN &lt;- conf_matrix[1, 2]
+TP &lt;- conf_matrix[2, 2]
+
+# Compute Accuracy: correct predictions divided by total predictions
+<span class="text-emerald-400 font-bold">accuracy &lt;- (TP + TN) / (TP + TN + FP + FN)</span>
+
+# Compute Precision: TP divided by all predicted positives
+<span class="text-emerald-400 font-bold">precision &lt;- TP / (TP + FP)</span>
+
+# Compute Recall: TP divided by all actual positives
+<span class="text-emerald-400 font-bold">recall &lt;- TP / (TP + FN)</span>
+
+cat("Accuracy:  ", round(accuracy * 100, 1), "%\n")
+cat("Precision: ", round(precision * 100, 1), "%\n")
+cat("Recall:    ", round(recall * 100, 1), "%\n")</pre>
+            </div>
           </div>
 
         </div>
@@ -697,19 +830,19 @@
             <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-bold">jeepney_riders.csv | 48 rows (4 years)</span>
           </div>
           <p>
-            A transport cooperative wants to understand the time-based patterns in its monthly ridership: which months are consistently busiest, whether ridership is growing, and how much random variation to expect. It will use this analysis to schedule units and drivers[cite: 13].
+            A transport cooperative wants to understand the time-based patterns in its monthly ridership: which months are consistently busiest, whether ridership is growing, and how much random variation to expect. It will use this analysis to schedule units and drivers.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="bg-white p-3 rounded-xl border border-emerald-100">
               <span class="font-bold text-emerald-900 block mb-1">Dataset Timing:</span>
-              <p class="text-slate-600">The first observation is January, and the observations continue consecutively by month for 4 years. With a yearly seasonal period of 12, the twelve seasonal positions correspond to January through December[cite: 13].</p>
+              <p class="text-slate-600">The first observation is January, and the observations continue consecutively by month for 4 years. With a yearly seasonal period of 12, the twelve seasonal positions correspond to January through December.</p>
             </div>
             <div class="bg-white p-3 rounded-xl border border-emerald-100">
               <span class="font-bold text-emerald-900 block mb-1">Component Business Meaning:</span>
               <ul class="space-y-0.5 text-slate-600">
-                <li>&bull; <strong>Trend:</strong> Is ridership growing or declining over the 4 years?[cite: 13]</li>
-                <li>&bull; <strong>Seasonality:</strong> Which months of the year are consistently busiest?[cite: 13]</li>
-                <li>&bull; <strong>Residual:</strong> How much unpredictable variation exists month to month?[cite: 13]</li>
+                <li>&bull; <strong>Trend:</strong> Is ridership growing or declining over the 4 years?</li>
+                <li>&bull; <strong>Seasonality:</strong> Which months of the year are consistently busiest?</li>
+                <li>&bull; <strong>Residual:</strong> How much unpredictable variation exists month to month?</li>
               </ul>
             </div>
           </div>
@@ -860,6 +993,66 @@
           </div>
           <div id="sol-30" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
             <span class="text-slate-400">Standard R statement:</span> legend("topleft", legend = c("Monthly", "3-Month SMA"), col = c("gray70", "darkred"), lwd = c(1, 2))
+          </div>
+
+          <!-- Full Completed Script Box for P-3 -->
+          <div class="pt-4 border-t border-slate-800">
+            <button onclick="toggleFullScript('p3')" class="w-full py-2 bg-emerald-600 hover:bg-emerald-500 text-white rounded-lg font-sans font-medium text-xs transition flex items-center justify-center gap-2">
+              <i class="fa-solid fa-code"></i> Show Complete P-3 Script with Answers
+            </button>
+            <div id="full-script-p3" class="hidden mt-3 p-4 bg-slate-950 border border-slate-800 rounded-xl overflow-x-auto text-[11px] leading-relaxed">
+              <div class="flex justify-between items-center pb-2 mb-2 border-b border-slate-800">
+                <span class="text-emerald-400 font-sans font-semibold">P-3 Complete Completed Script (Blanks 21–30 Filled)</span>
+                <button onclick="navigator.clipboard.writeText(document.getElementById('raw-code-p3').innerText)" class="text-slate-400 hover:text-white font-sans text-[10px]">
+                  <i class="fa-regular fa-copy mr-1"></i> Copy Code
+                </button>
+              </div>
+              <pre id="raw-code-p3" class="code-font text-slate-300"># STEP 1: Load the dataset -----------------------------------------
+ride_data &lt;- read.csv("jeepney_riders.csv")
+
+# STEP 2: Create and decompose the time-series object -------------
+# Create a time-series object named ts_riders from
+# ride_data$monthly_riders. The data has a yearly
+# repeating pattern; use 12 months per cycle
+<span class="text-emerald-400 font-bold">ts_riders &lt;- ts(ride_data$monthly_riders, frequency = 12)</span>
+
+# Decompose ts_riders into trend, seasonality, and residual
+# Store the result in decomp
+<span class="text-emerald-400 font-bold">decomp &lt;- decompose(ts_riders)</span>
+
+# Display all four decomposition panels
+<span class="text-emerald-400 font-bold">plot(decomp)</span>
+
+# Extract and print the seasonal component for the first 12 months
+# (one full yearly cycle: Month 1 = January, Month 12 = December)
+<span class="text-emerald-400 font-bold">decomp$seasonal[1:12]</span>
+
+# STEP 3: Compute the 3-month simple moving average ---------------
+# Store the total number of observations in n
+<span class="text-emerald-400 font-bold">n &lt;- length(ride_data$monthly_riders)</span>
+
+# Create a vector named sma3 filled with NA values, length n
+<span class="text-emerald-400 font-bold">sma3 &lt;- rep(NA, n)</span>
+
+for (i in 3:n) {
+  # For each month from month 3 onward, compute the mean
+  # of that month and the 2 months before it
+  <span class="text-emerald-400 font-bold">sma3[i] &lt;- mean(ride_data$monthly_riders[(i - 2):i])</span>
+}
+
+# STEP 4: Plot the series with the moving average overlay ------
+# Plot ride_data$monthly_riders as a gray70 line
+# Use main = "Monthly Riders with 3-Month Moving Average"
+# Use ylab = "Riders" and xlab = "Month"
+<span class="text-emerald-400 font-bold">plot(ride_data$monthly_riders, type = "l", col = "gray70", main = "Monthly Riders with 3-Month Moving Average", ylab = "Riders", xlab = "Month")</span>
+
+# Overlay the 3-month moving average as a darkred line, line width 2
+<span class="text-emerald-400 font-bold">lines(sma3, col = "darkred", lwd = 2)</span>
+
+# Add a legend in the top-left corner showing "Monthly" in gray70
+# and "3-Month SMA" in darkred, with line widths 1 and 2
+<span class="text-emerald-400 font-bold">legend("topleft", legend = c("Monthly", "3-Month SMA"), col = c("gray70", "darkred"), lwd = c(1, 2))</span></pre>
+            </div>
           </div>
 
         </div>
@@ -1221,6 +1414,13 @@
       const box = document.getElementById(`sol-${num}`);
       box.classList.toggle('hidden');
     }
+
+    function toggleFullScript(probId) {
+  const box = document.getElementById(`full-script-${probId}`);
+  if (box) {
+    box.classList.toggle('hidden');
+  }
+}
 
     function revealAllInProblem(probId) {
       let start = 1, end = 10;
