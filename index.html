@@ -59,11 +59,11 @@
         <div class="text-sm">
           <p class="font-bold text-amber-900">Midterm Exam Strict Rule Alert:</p>
           <p class="text-amber-800">
-            In <strong>Part II</strong>, writing only the final number earns <strong>0 credit</strong>[cite: 1]. You MUST show:
+            In <strong>Part II</strong>, writing only the final number earns <strong>0 credit</strong>. You MUST show:
             <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">1. Formula</code> &rarr; 
             <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">2. Substitution (including 0 terms like 950(0))</code> &rarr; 
             <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">3. Computation</code> &rarr; 
-            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">4. Business Action / Boundary check</code>[cite: 8, 14, 15].
+            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">4. Business Action / Boundary check</code>.
           </p>
         </div>
       </div>
@@ -77,19 +77,19 @@
             <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">1</span>
             <h3>Model Selection Decision Matrix</h3>
           </div>
-          <p class="text-xs text-slate-500 mb-3">Always ask: <em>"What is the data type of the outcome variable?"</em>[cite: 1]</p>
+          <p class="text-xs text-slate-500 mb-3">Always ask: <em>"What is the data type of the outcome variable?"</em></p>
           <div class="space-y-2.5 text-xs">
             <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200">
               <span class="font-semibold text-blue-900 block mb-0.5"><i class="fa-solid fa-hashtag mr-1"></i> Regression</span>
-              <p class="text-slate-700">Outcome is a <strong>Continuous or Count Number</strong> (e.g., revenue, selling price, delivery minutes, electricity bill)[cite: 1, 2, 10].</p>
+              <p class="text-slate-700">Outcome is a <strong>Continuous or Count Number</strong> (e.g., revenue, selling price, delivery minutes, electricity bill).</p>
             </div>
             <div class="p-2.5 rounded-lg bg-purple-50 border border-purple-200">
               <span class="font-semibold text-purple-900 block mb-0.5"><i class="fa-solid fa-tags mr-1"></i> Classification</span>
-              <p class="text-slate-700">Outcome is a <strong>Category / Binary Group</strong> (e.g., default vs no default, spam vs ham, renew vs cancel)[cite: 1, 2, 11].</p>
+              <p class="text-slate-700">Outcome is a <strong>Category / Binary Group</strong> (e.g., default vs no default, spam vs ham, renew vs cancel).</p>
             </div>
             <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200">
               <span class="font-semibold text-emerald-900 block mb-0.5"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Time Series</span>
-              <p class="text-slate-700">Outcome is <strong>Numeric and strictly ordered over regular time intervals</strong> (e.g., daily orders, monthly ridership)[cite: 1, 6, 13].</p>
+              <p class="text-slate-700">Outcome is <strong>Numeric and strictly ordered over regular time intervals</strong> (e.g., daily orders, monthly ridership).</p>
             </div>
           </div>
         </div>
@@ -110,7 +110,7 @@
             <div>test  &lt;- df[-train_rows, ]</div>
           </div>
           <div class="text-xs text-rose-700 bg-rose-50 p-2.5 rounded-lg border border-rose-200">
-            <strong>Critical Exam Pitfall:</strong> Missing the comma inside brackets: <code class="bg-white px-1 py-0.5 border rounded">df[train_rows, ]</code>[cite: 3]. Leaving out the comma will fail or slice columns instead of rows!
+            <strong>Critical Exam Pitfall:</strong> Missing the comma inside brackets: <code class="bg-white px-1 py-0.5 border rounded">df[train_rows, ]</code>. Leaving out the comma will fail or slice columns instead of rows!
           </div>
         </div>
 
@@ -128,7 +128,7 @@
           </div>
           <p class="text-xs text-slate-600">
             <strong>Study Tip:</strong> Read RMSE from the inside-out: 
-            <span class="font-medium text-slate-800">errors &rarr; square (<code class="code-font">errors^2</code>) &rarr; average (<code class="code-font">mean()</code>) &rarr; root (<code class="code-font">sqrt()</code>)</span> to get back to original units[cite: 3].
+            <span class="font-medium text-slate-800">errors &rarr; square (<code class="code-font">errors^2</code>) &rarr; average (<code class="code-font">mean()</code>) &rarr; root (<code class="code-font">sqrt()</code>)</span> to get back to original units.
           </p>
         </div>
 
@@ -139,7 +139,7 @@
             <h3>Decision Tree & Confusion Matrix</h3>
           </div>
           <p class="text-xs text-slate-600 mb-2">
-            <strong>Mandatory step:</strong> <code class="code-font text-purple-700 bg-purple-50 px-1 py-0.5 rounded">df$approved &lt;- as.factor(df$approved)</code> prior to fitting![cite: 2, 4]
+            <strong>Mandatory step:</strong> <code class="code-font text-purple-700 bg-purple-50 px-1 py-0.5 rounded">df$approved &lt;- as.factor(df$approved)</code> prior to fitting!
           </p>
 
           <!-- Matrix Table with Meanings -->
@@ -187,10 +187,10 @@
           <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] space-y-1 mb-2.5 text-slate-700">
             <span class="font-bold text-slate-900 block text-[11px]">How to Remember the Terms:</span>
             <div class="grid grid-cols-2 gap-1 text-[10px]">
-              <div><strong class="text-emerald-700">TN:</strong> Predicted 0, Actual 0 (Correct)[cite: 5]</div>
-              <div><strong class="text-rose-700">FN:</strong> Predicted 0, Actual 1 (Missed positive)[cite: 5]</div>
-              <div><strong class="text-rose-700">FP:</strong> Predicted 1, Actual 0 (False alarm)[cite: 5]</div>
-              <div><strong class="text-emerald-700">TP:</strong> Predicted 1, Actual 1 (Correct)[cite: 5]</div>
+              <div><strong class="text-emerald-700">TN:</strong> Predicted 0, Actual 0 (Correct)</div>
+              <div><strong class="text-rose-700">FN:</strong> Predicted 0, Actual 1 (Missed positive)</div>
+              <div><strong class="text-rose-700">FP:</strong> Predicted 1, Actual 0 (False alarm)</div>
+              <div><strong class="text-emerald-700">TP:</strong> Predicted 1, Actual 1 (Correct)</div>
             </div>
           </div>
 
@@ -221,14 +221,14 @@
               <span class="font-bold text-amber-900 block mb-1"><i class="fa-solid fa-bullseye text-amber-600 mr-1"></i> Prioritize RECALL when:</span>
               <p class="text-amber-800">
                 <strong>Missing a true case (False Negative) is catastrophic or costlier.</strong><br>
-                <em>Examples:</em> Catching cancer, student failing/dropouts, loan defaults, fraud[cite: 5].
+                <em>Examples:</em> Catching cancer, student failing/dropouts, loan defaults, fraud.
               </p>
             </div>
             <div class="p-2.5 rounded-lg bg-teal-50 border border-teal-200">
               <span class="font-bold text-teal-900 block mb-1"><i class="fa-solid fa-filter text-teal-600 mr-1"></i> Prioritize PRECISION when:</span>
               <p class="text-teal-800">
                 <strong>A false alarm (False Positive) wastes expensive resources or annoys users.</strong><br>
-                <em>Examples:</em> Spam filter deleting real email, expensive remediation invitations[cite: 5].
+                <em>Examples:</em> Spam filter deleting real email, expensive remediation invitations.
               </p>
             </div>
           </div>
@@ -241,8 +241,8 @@
             <h3>Time Series & Moving Average Window</h3>
           </div>
           <div class="text-xs space-y-2 mb-2">
-            <p><strong>Frequency Rules:</strong> Daily with weekly pattern = <code class="code-font text-blue-600">7</code>. Monthly with yearly pattern = <code class="code-font text-blue-600">12</code>[cite: 6, 7].</p>
-            <p><strong>Decomposition 4 panels:</strong> Observed ($x$), Trend, Seasonal, Random/Residual[cite: 6].</p>
+            <p><strong>Frequency Rules:</strong> Daily with weekly pattern = <code class="code-font text-blue-600">7</code>. Monthly with yearly pattern = <code class="code-font text-blue-600">12</code>.</p>
+            <p><strong>Decomposition 4 panels:</strong> Observed ($x$), Trend, Seasonal, Random/Residual.</p>
           </div>
           <div class="bg-slate-900 text-slate-100 p-3 rounded-xl text-xs code-font space-y-1">
             <div class="text-emerald-400"># k-period loop formula: (i - (k - 1)):i</div>
@@ -264,7 +264,7 @@
         <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
           <i class="fa-solid fa-clipboard-check text-indigo-600"></i> Pre-Exam Readiness Checklist
         </h3>
-        <p class="text-xs text-slate-500 mb-4">Click each item you can confidently explain without looking at notes[cite: 9]:</p>
+        <p class="text-xs text-slate-500 mb-4">Click each item you can confidently explain without looking at notes:</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="checklist-container">
           <!-- Populated by JS -->
         </div>
@@ -1103,11 +1103,11 @@ for (i in 3:n) {
         </div>
         
         <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-xs text-amber-900">
-          <strong>Directions:</strong> Show the formula, substitution and final answer for each item. No formula, no credit[cite: 1, 14].
+          <strong>Directions:</strong> Show the formula, substitution and final answer for each item. No formula, no credit.
         </div>
 
         <p class="text-xs text-slate-700 leading-relaxed">
-          After building the model in Problem P-1 on a later semester's data, the housing office ran <code class="code-font text-indigo-700 bg-slate-100 px-1 py-0.5 rounded">summary(model_bill)</code> and obtained the coefficients below[cite: 14]. Use them, together with the Advisory Rules for the Housing Office in Problem P-1, to answer each item[cite: 10, 14].
+          After building the model in Problem P-1 on a later semester's data, the housing office ran <code class="code-font text-indigo-700 bg-slate-100 px-1 py-0.5 rounded">summary(model_bill)</code> and obtained the coefficients below. Use them, together with the Advisory Rules for the Housing Office in Problem P-1, to answer each item.
         </p>
 
         <!-- PDF Coefficient Table -->
@@ -1148,7 +1148,7 @@ for (i in 3:n) {
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b pb-2">
             <h3 class="text-xs font-bold text-slate-900">
-              31. Predict the monthly bill for a room with 4 occupants, WITH an aircon, using appliances 10 hours a day. Show your full computation. (5 pts)[cite: 14]
+              31. Predict the monthly bill for a room with 4 occupants, WITH an aircon, using appliances 10 hours a day. Show your full computation. (5 pts)
             </h3>
             <button onclick="toggleAnswer(31)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
               <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
@@ -1158,28 +1158,28 @@ for (i in 3:n) {
           <div class="space-y-2 text-xs">
             <div>
               <span class="font-semibold text-slate-700">Formula:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 14]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Substitution:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 14]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
-              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 14]
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)
             </div>
             <div>
               <span class="font-semibold text-slate-700">Recommended Action:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 14]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)</div>
             </div>
           </div>
 
           <!-- Answer Key for Q31 -->
           <div id="hand-ans-31" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
-            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
-            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(4) + 950.00(1) + 45.00(10)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span></div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(4) + 950.00(1) + 45.00(10)</span></div>
             <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-amber-300 font-bold">2,440</span></div>
-            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-amber-400 font-bold">Moderate usage — include a reminder in the monthly bulletin</span>[cite: 10]</div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-amber-400 font-bold">Moderate usage — include a reminder in the monthly bulletin</span></div>
           </div>
         </div>
 
@@ -1187,7 +1187,7 @@ for (i in 3:n) {
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b pb-2">
             <h3 class="text-xs font-bold text-slate-900">
-              32. Predict the monthly bill for a room with 2 occupants, WITHOUT an aircon, using appliances 6 hours a day. Show your full computation. (5 pts)[cite: 15]
+              32. Predict the monthly bill for a room with 2 occupants, WITHOUT an aircon, using appliances 6 hours a day. Show your full computation. (5 pts)
             </h3>
             <button onclick="toggleAnswer(32)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
               <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
@@ -1197,28 +1197,28 @@ for (i in 3:n) {
           <div class="space-y-2 text-xs">
             <div>
               <span class="font-semibold text-slate-700">Formula:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Substitution:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
-              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 15]
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)
             </div>
             <div>
               <span class="font-semibold text-slate-700">Recommended Action:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)</div>
             </div>
           </div>
 
           <!-- Answer Key for Q32 -->
           <div id="hand-ans-32" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
-            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
-            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(2) + 950.00(0) + 45.00(6)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span></div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(2) + 950.00(0) + 45.00(6)</span></div>
             <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-emerald-300 font-bold">950</span></div>
-            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-emerald-400 font-bold">Normal usage — no action needed</span>[cite: 10]</div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-emerald-400 font-bold">Normal usage — no action needed</span></div>
           </div>
         </div>
 
@@ -1226,7 +1226,7 @@ for (i in 3:n) {
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b pb-2">
             <h3 class="text-xs font-bold text-slate-900">
-              33. Predict the monthly bill for a room with 5 occupants, WITH an aircon, using appliances 14 hours a day. Show your full computation. (5 pts)[cite: 15]
+              33. Predict the monthly bill for a room with 5 occupants, WITH an aircon, using appliances 14 hours a day. Show your full computation. (5 pts)
             </h3>
             <button onclick="toggleAnswer(33)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
               <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
@@ -1236,28 +1236,28 @@ for (i in 3:n) {
           <div class="space-y-2 text-xs">
             <div>
               <span class="font-semibold text-slate-700">Formula:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Substitution:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
-              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 15]
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)
             </div>
             <div>
               <span class="font-semibold text-slate-700">Recommended Action:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)</div>
             </div>
           </div>
 
           <!-- Answer Key for Q33 -->
           <div id="hand-ans-33" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
-            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
-            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(5) + 950.00(1) + 45.00(14)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span></div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(5) + 950.00(1) + 45.00(14)</span></div>
             <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-rose-400 font-bold">2,800</span></div>
-            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-rose-400 font-bold">High usage — send an energy-saving notice</span>[cite: 10]</div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-rose-400 font-bold">High usage — send an energy-saving notice</span></div>
           </div>
         </div>
 
@@ -1265,7 +1265,7 @@ for (i in 3:n) {
         <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
           <div class="flex items-center justify-between border-b pb-2">
             <h3 class="text-xs font-bold text-slate-900 leading-relaxed">
-              34. The housing office wants to know when a room reaches High usage (PHP 2,500). For a room with 3 occupants WITH an aircon, what is the minimum whole number of hours per day the appliances must be used for the predicted bill to reach PHP 2,500? Show your full computation. (5 pts)[cite: 15]
+              34. The housing office wants to know when a room reaches High usage (PHP 2,500). For a room with 3 occupants WITH an aircon, what is the minimum whole number of hours per day the appliances must be used for the predicted bill to reach PHP 2,500? Show your full computation. (5 pts)
             </h3>
             <button onclick="toggleAnswer(34)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
               <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
@@ -1275,29 +1275,29 @@ for (i in 3:n) {
           <div class="space-y-2 text-xs">
             <div>
               <span class="font-semibold text-slate-700">Formula:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Substitution:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)</div>
             </div>
             <div>
               <span class="font-semibold text-slate-700">Percentage Error =</span>
-              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">________</span> % (1 pt)[cite: 15]
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">________</span> % (1 pt)
             </div>
             <div>
               <span class="font-semibold text-slate-700">Interpretation:</span>
-              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________ (1 pt)[cite: 15]</div>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________ (1 pt)</div>
             </div>
           </div>
 
           <!-- Answer Key for Q34 -->
           <div id="hand-ans-34" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
-            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
-            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">2,500 = 320.00 + 180.00(3) + 950.00(1) + 45.00(hours_used) &rarr; 2,500 = 1,810 + 45.00(hours_used)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span></div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">2,500 = 320.00 + 180.00(3) + 950.00(1) + 45.00(hours_used) &rarr; 2,500 = 1,810 + 45.00(hours_used)</span></div>
             <div><span class="text-slate-400 font-sans">Solving for hours:</span> <span class="text-indigo-300">hours_used = (2,500 - 1,810) / 45 = 690 / 45 &approx; 15.33 hours</span></div>
-            <div><span class="text-slate-400 font-sans">Percentage Error / Answer (1 pt):</span> <span class="text-amber-300 font-bold">16 whole hours</span> (at 15 hrs bill = PHP 2,485; at 16 hrs bill = PHP 2,530 &ge; 2,500)[cite: 10]</div>
-            <div><span class="text-slate-400 font-sans">Interpretation (1 pt):</span> <span class="text-emerald-400 font-bold">Appliances must be used for at least 16 whole hours per day to reach High usage and trigger an energy-saving notice.</span>[cite: 10]</div>
+            <div><span class="text-slate-400 font-sans">Percentage Error / Answer (1 pt):</span> <span class="text-amber-300 font-bold">16 whole hours</span> (at 15 hrs bill = PHP 2,485; at 16 hrs bill = PHP 2,530 &ge; 2,500)</div>
+            <div><span class="text-slate-400 font-sans">Interpretation (1 pt):</span> <span class="text-emerald-400 font-bold">Appliances must be used for at least 16 whole hours per day to reach High usage and trigger an energy-saving notice.</span></div>
           </div>
         </div>
 
