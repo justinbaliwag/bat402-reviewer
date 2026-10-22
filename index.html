@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAT 402: Predictive Analytics Modeling - Complete Reviewer & Exam Simulator</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&display=swap');
+    body { font-family: 'Inter', sans-serif; }
+    pre, code, .code-font { font-family: 'Fira Code', monospace; }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+
+  <!-- Header -->
+  <header class="bg-indigo-900 text-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center space-x-3">
+        <div class="p-2.5 bg-indigo-700/60 rounded-xl border border-indigo-500/30">
+          <i class="fa-solid fa-chart-line text-amber-400 text-xl"></i>
+        </div>
+        <div>
+          <h1 class="text-lg font-bold leading-tight tracking-tight">BAT 402: Predictive Analytics Modeling</h1>
+          <p class="text-xs text-indigo-200">Midterm Examination Complete Reviewer & Exam Simulator</p>
+        </div>
+      </div>
+      
+      <!-- Navigation Tabs -->
+      <nav class="flex space-x-1 sm:space-x-2 bg-indigo-950/70 p-1 rounded-xl text-xs sm:text-sm">
+        <button onclick="switchTab('study-guide')" id="tab-study-guide" class="nav-tab px-3 py-1.5 rounded-lg font-medium transition text-white bg-indigo-700 shadow-sm flex items-center gap-1.5">
+          <i class="fa-solid fa-book-open"></i> Must-Know Guide
+        </button>
+        <button onclick="switchTab('code-drill')" id="tab-code-drill" class="nav-tab px-3 py-1.5 rounded-lg font-medium transition text-indigo-200 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-code"></i> Part I Code Script Drill (P1–P3)
+        </button>
+        <button onclick="switchTab('practice-exam')" id="tab-practice-exam" class="nav-tab px-3 py-1.5 rounded-lg font-medium transition text-indigo-200 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-list-check"></i> Practice Exam (20 Qs)
+        </button>
+        <button onclick="switchTab('part2-calc')" id="tab-part2-calc" class="nav-tab px-3 py-1.5 rounded-lg font-medium transition text-indigo-200 hover:text-white flex items-center gap-1.5">
+          <i class="fa-solid fa-calculator"></i> Part II Hand-Calc (Q31–34)
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
+
+    <!-- ========================================================================= -->
+    <!-- TAB 1: MUST-KNOW STUDY GUIDE & EXAM TRAPS -->
+    <!-- ========================================================================= -->
+    <section id="view-study-guide" class="space-y-6">
+      
+      <!-- Alert Banner -->
+      <div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-xl shadow-sm flex items-start space-x-3">
+        <i class="fa-solid fa-triangle-exclamation text-amber-600 mt-1 text-lg"></i>
+        <div class="text-sm">
+          <p class="font-bold text-amber-900">Midterm Exam Strict Rule Alert:</p>
+          <p class="text-amber-800">
+            In <strong>Part II</strong>, writing only the final number earns <strong>0 credit</strong>[cite: 1]. You MUST show:
+            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">1. Formula</code> &rarr; 
+            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">2. Substitution (including 0 terms like 950(0))</code> &rarr; 
+            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">3. Computation</code> &rarr; 
+            <code class="bg-amber-100 text-amber-900 px-1 py-0.5 rounded font-semibold">4. Business Action / Boundary check</code>[cite: 8, 14, 15].
+          </p>
+        </div>
+      </div>
+
+      <!-- Core Modules Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+        <!-- Card 1: Model Selection -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">1</span>
+            <h3>Model Selection Decision Matrix</h3>
+          </div>
+          <p class="text-xs text-slate-500 mb-3">Always ask: <em>"What is the data type of the outcome variable?"</em>[cite: 1]</p>
+          <div class="space-y-2.5 text-xs">
+            <div class="p-2.5 rounded-lg bg-blue-50 border border-blue-200">
+              <span class="font-semibold text-blue-900 block mb-0.5"><i class="fa-solid fa-hashtag mr-1"></i> Regression</span>
+              <p class="text-slate-700">Outcome is a <strong>Continuous or Count Number</strong> (e.g., revenue, selling price, delivery minutes, electricity bill)[cite: 1, 2, 10].</p>
+            </div>
+            <div class="p-2.5 rounded-lg bg-purple-50 border border-purple-200">
+              <span class="font-semibold text-purple-900 block mb-0.5"><i class="fa-solid fa-tags mr-1"></i> Classification</span>
+              <p class="text-slate-700">Outcome is a <strong>Category / Binary Group</strong> (e.g., default vs no default, spam vs ham, renew vs cancel)[cite: 1, 2, 11].</p>
+            </div>
+            <div class="p-2.5 rounded-lg bg-emerald-50 border border-emerald-200">
+              <span class="font-semibold text-emerald-900 block mb-0.5"><i class="fa-solid fa-clock-rotate-left mr-1"></i> Time Series</span>
+              <p class="text-slate-700">Outcome is <strong>Numeric and strictly ordered over regular time intervals</strong> (e.g., daily orders, monthly ridership)[cite: 1, 6, 13].</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Train-Test Split R Syntax -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">2</span>
+            <h3>Train-Test Split Syntax & Traps</h3>
+          </div>
+          <div class="bg-slate-900 text-slate-100 p-3 rounded-xl text-xs code-font space-y-1 mb-3">
+            <div class="text-emerald-400"># 1. Reproducibility</div>
+            <div>set.seed(42)</div>
+            <div class="text-emerald-400 mt-2"># 2. Sample 80% row indices</div>
+            <div>train_rows &lt;- sample(1:nrow(df), size = round(0.80 * nrow(df)))</div>
+            <div class="text-emerald-400 mt-2"># 3. Create subsets (Note COMMA!)</div>
+            <div>train &lt;- df[train_rows, ]</div>
+            <div>test  &lt;- df[-train_rows, ]</div>
+          </div>
+          <div class="text-xs text-rose-700 bg-rose-50 p-2.5 rounded-lg border border-rose-200">
+            <strong>Critical Exam Pitfall:</strong> Missing the comma inside brackets: <code class="bg-white px-1 py-0.5 border rounded">df[train_rows, ]</code>[cite: 3]. Leaving out the comma will fail or slice columns instead of rows!
+          </div>
+        </div>
+
+        <!-- Card 3: Multiple Regression & RMSE -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">3</span>
+            <h3>Regression Syntax & RMSE Logic</h3>
+          </div>
+          <div class="bg-slate-900 text-slate-100 p-3 rounded-xl text-xs code-font space-y-1 mb-3">
+            <div>model &lt;- lm(Y ~ X1 + X2 + X3, data = train)</div>
+            <div>pred &lt;- predict(model, newdata = test)</div>
+            <div>errors &lt;- test$sales - pred</div>
+            <div>rmse &lt;- sqrt(mean(errors^2))</div>
+          </div>
+          <p class="text-xs text-slate-600">
+            <strong>Study Tip:</strong> Read RMSE from the inside-out: 
+            <span class="font-medium text-slate-800">errors &rarr; square (<code class="code-font">errors^2</code>) &rarr; average (<code class="code-font">mean()</code>) &rarr; root (<code class="code-font">sqrt()</code>)</span> to get back to original units[cite: 3].
+          </p>
+        </div>
+
+        <!-- Card 4: Decision Tree & Confusion Matrix WITH EXPLICIT DEFINITIONS -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">4</span>
+            <h3>Decision Tree & Confusion Matrix</h3>
+          </div>
+          <p class="text-xs text-slate-600 mb-2">
+            <strong>Mandatory step:</strong> <code class="code-font text-purple-700 bg-purple-50 px-1 py-0.5 rounded">df$approved &lt;- as.factor(df$approved)</code> prior to fitting![cite: 2, 4]
+          </p>
+
+          <!-- Matrix Table with Meanings -->
+          <div class="overflow-x-auto mb-2.5">
+            <table class="w-full text-center text-[11px] border border-slate-300">
+              <thead class="bg-slate-100 text-slate-700 font-semibold">
+                <tr>
+                  <th class="p-1.5 border">R Matrix Indices</th>
+                  <th class="p-1.5 border bg-slate-200">Actual 0</th>
+                  <th class="p-1.5 border bg-slate-200">Actual 1</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="font-semibold p-1.5 border bg-slate-50 text-left">Predicted 0</td>
+                  <td class="p-1.5 border bg-emerald-50 text-emerald-900">
+                    <span class="font-bold block">TN [1,1]</span>
+                    <span class="text-[10px] text-emerald-700 font-medium">True Negative</span>
+                    <span class="text-[9px] text-slate-500 block">Pred 0, Act 0 (Correct)</span>
+                  </td>
+                  <td class="p-1.5 border bg-rose-50 text-rose-900">
+                    <span class="font-bold block">FN [1,2]</span>
+                    <span class="text-[10px] text-rose-700 font-medium">False Negative</span>
+                    <span class="text-[9px] text-slate-500 block">Pred 0, Act 1 (Missed!)</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="font-semibold p-1.5 border bg-slate-50 text-left">Predicted 1</td>
+                  <td class="p-1.5 border bg-rose-50 text-rose-900">
+                    <span class="font-bold block">FP [2,1]</span>
+                    <span class="text-[10px] text-rose-700 font-medium">False Positive</span>
+                    <span class="text-[9px] text-slate-500 block">Pred 1, Act 0 (False Alarm)</span>
+                  </td>
+                  <td class="p-1.5 border bg-emerald-50 text-emerald-900">
+                    <span class="font-bold block">TP [2,2]</span>
+                    <span class="text-[10px] text-emerald-700 font-medium">True Positive</span>
+                    <span class="text-[9px] text-slate-500 block">Pred 1, Act 1 (Correct)</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <!-- Meaning Legend Box -->
+          <div class="bg-slate-50 p-2.5 rounded-lg border border-slate-200 text-[11px] space-y-1 mb-2.5 text-slate-700">
+            <span class="font-bold text-slate-900 block text-[11px]">How to Remember the Terms:</span>
+            <div class="grid grid-cols-2 gap-1 text-[10px]">
+              <div><strong class="text-emerald-700">TN:</strong> Predicted 0, Actual 0 (Correct)[cite: 5]</div>
+              <div><strong class="text-rose-700">FN:</strong> Predicted 0, Actual 1 (Missed positive)[cite: 5]</div>
+              <div><strong class="text-rose-700">FP:</strong> Predicted 1, Actual 0 (False alarm)[cite: 5]</div>
+              <div><strong class="text-emerald-700">TP:</strong> Predicted 1, Actual 1 (Correct)[cite: 5]</div>
+            </div>
+          </div>
+
+          <div class="space-y-1 text-xs">
+            <div class="flex justify-between border-b pb-1">
+              <span class="font-semibold">Accuracy:</span>
+              <span class="code-font text-slate-700">(TP + TN) / Total</span>
+            </div>
+            <div class="flex justify-between border-b pb-1">
+              <span class="font-semibold">Precision:</span>
+              <span class="code-font text-slate-700">TP / (TP + FP)</span>
+            </div>
+            <div class="flex justify-between">
+              <span class="font-semibold">Recall:</span>
+              <span class="code-font text-slate-700">TP / (TP + FN)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Precision vs Recall Decision -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">5</span>
+            <h3>When to Prioritize Recall vs. Precision</h3>
+          </div>
+          <div class="space-y-3 text-xs">
+            <div class="p-2.5 rounded-lg bg-amber-50 border border-amber-200">
+              <span class="font-bold text-amber-900 block mb-1"><i class="fa-solid fa-bullseye text-amber-600 mr-1"></i> Prioritize RECALL when:</span>
+              <p class="text-amber-800">
+                <strong>Missing a true case (False Negative) is catastrophic or costlier.</strong><br>
+                <em>Examples:</em> Catching cancer, student failing/dropouts, loan defaults, fraud[cite: 5].
+              </p>
+            </div>
+            <div class="p-2.5 rounded-lg bg-teal-50 border border-teal-200">
+              <span class="font-bold text-teal-900 block mb-1"><i class="fa-solid fa-filter text-teal-600 mr-1"></i> Prioritize PRECISION when:</span>
+              <p class="text-teal-800">
+                <strong>A false alarm (False Positive) wastes expensive resources or annoys users.</strong><br>
+                <em>Examples:</em> Spam filter deleting real email, expensive remediation invitations[cite: 5].
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 6: Time Series Decomposition & Moving Average -->
+        <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-5 hover:border-indigo-300 transition">
+          <div class="flex items-center space-x-2 text-indigo-600 font-bold mb-3 pb-2 border-b">
+            <span class="w-7 h-7 rounded-full bg-indigo-100 flex items-center justify-center text-xs">6</span>
+            <h3>Time Series & Moving Average Window</h3>
+          </div>
+          <div class="text-xs space-y-2 mb-2">
+            <p><strong>Frequency Rules:</strong> Daily with weekly pattern = <code class="code-font text-blue-600">7</code>. Monthly with yearly pattern = <code class="code-font text-blue-600">12</code>[cite: 6, 7].</p>
+            <p><strong>Decomposition 4 panels:</strong> Observed ($x$), Trend, Seasonal, Random/Residual[cite: 6].</p>
+          </div>
+          <div class="bg-slate-900 text-slate-100 p-3 rounded-xl text-xs code-font space-y-1">
+            <div class="text-emerald-400"># k-period loop formula: (i - (k - 1)):i</div>
+            <div class="text-emerald-400"># For 7-day: 7:n with (i-6):i</div>
+            <div>for (i in 7:n) {</div>
+            <div>&nbsp;&nbsp;sma7[i] &lt;- mean(orders[(i - 6):i])</div>
+            <div>}</div>
+            <div class="text-emerald-400 mt-1"># For 3-month: 3:n with (i-2):i</div>
+            <div>for (i in 3:n) {</div>
+            <div>&nbsp;&nbsp;sma3[i] &lt;- mean(riders[(i - 2):i])</div>
+            <div>}</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Quick Interactive Self-Test Checklist -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm">
+        <h3 class="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-clipboard-check text-indigo-600"></i> Pre-Exam Readiness Checklist
+        </h3>
+        <p class="text-xs text-slate-500 mb-4">Click each item you can confidently explain without looking at notes[cite: 9]:</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs" id="checklist-container">
+          <!-- Populated by JS -->
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 2: VERBATIM PART I CODE COMPLETION DRILL (P-1, P-2, P-3) -->
+    <!-- ========================================================================= -->
+    <section id="view-code-drill" class="hidden space-y-6">
+      
+      <!-- Top Overview Bar -->
+      <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider bg-indigo-50 px-2.5 py-0.5 rounded-full">Part I: 30 Points Total</span>
+            <span class="text-xs text-slate-500">1 point per blank &bull; Exact PDF Statements</span>
+          </div>
+          <h2 class="text-xl font-bold text-slate-900 mt-1">Complete R Program Workflow Completion Drill</h2>
+        </div>
+        
+        <!-- Script Selectors -->
+        <div class="flex flex-wrap gap-2 text-xs font-semibold">
+          <button onclick="showProblem('p1')" id="p-btn-p1" class="problem-tab-btn px-3 py-1.5 rounded-lg bg-indigo-700 text-white shadow-sm transition">
+            Problem P-1: Electricity Bills (Blanks 1–10)
+          </button>
+          <button onclick="showProblem('p2')" id="p-btn-p2" class="problem-tab-btn px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            Problem P-2: Internet Renewal (Blanks 11–20)
+          </button>
+          <button onclick="showProblem('p3')" id="p-btn-p3" class="problem-tab-btn px-3 py-1.5 rounded-lg bg-slate-100 text-slate-700 hover:bg-slate-200 transition">
+            Problem P-3: Jeepney Ridership (Blanks 21–30)
+          </button>
+        </div>
+      </div>
+
+      <!-- Problem 1: Dorm Power Container -->
+      <div id="prob-container-p1" class="problem-view space-y-5">
+        
+        <!-- Scenario Card -->
+        <div class="bg-indigo-50 border border-indigo-200 rounded-2xl p-5 text-xs text-slate-700 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-indigo-950">Problem P-1: Predicting Dormitory Monthly Electricity Bills (10 points)</h3>
+            <span class="px-2 py-0.5 rounded bg-indigo-200 text-indigo-900 font-bold">dorm_power.csv | 150 rows</span>
+          </div>
+          <p>
+            The university housing office wants to predict each dormitory room's monthly electricity bill so it can warn residents early about high usage and plan the utilities budget[cite: 10].
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-3 rounded-xl border border-indigo-100">
+              <span class="font-bold text-indigo-900 block mb-1">Dataset Variables:</span>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-600">
+                <li><code class="code-font text-indigo-700">monthly_bill</code>: Electricity bill for the month (PHP)[cite: 10]</li>
+                <li><code class="code-font text-indigo-700">num_occupants</code>: Number of residents in the room[cite: 10]</li>
+                <li><code class="code-font text-indigo-700">has_aircon</code>: 1 if the room has an air conditioner, 0 if not[cite: 10]</li>
+                <li><code class="code-font text-indigo-700">hours_used</code>: Average hours per day the main appliances are in use[cite: 10]</li>
+              </ul>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-indigo-100">
+              <span class="font-bold text-indigo-900 block mb-1">Advisory Rules for the Housing Office:</span>
+              <ul class="space-y-1 text-slate-600">
+                <li>&bull; <strong class="text-rose-600">PHP 2,500 and above</strong>: High usage &rarr; send an energy-saving notice[cite: 10]</li>
+                <li>&bull; <strong class="text-amber-600">PHP 1,500 to below PHP 2,500</strong>: Moderate usage &rarr; include a reminder in the monthly bulletin[cite: 10]</li>
+                <li>&bull; <strong class="text-emerald-600">Below PHP 1,500</strong>: Normal usage &rarr; no action needed[cite: 10]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive R Script Walkthrough P-1 -->
+        <div class="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 text-slate-200 p-5 code-font text-xs space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <span class="text-slate-400 font-medium"><i class="fa-brands fa-r-project text-blue-400 mr-2"></i>dorm_power_analysis.R</span>
+            <button onclick="revealAllInProblem('p1')" class="px-2.5 py-1 bg-indigo-600 hover:bg-indigo-500 text-white rounded text-[11px] font-sans">
+              Reveal All P-1 Answers
+            </button>
+          </div>
+
+          <div class="text-slate-500"># STEP 1: Load the dataset -----------------------------------------</div>
+          <div class="text-emerald-400 font-medium"># Load the dataset into a data frame named power_data</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [1]:</span>
+            <input type="text" id="blank-1" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(1)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(1)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-1" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> power_data &lt;- read.csv("dorm_power.csv")
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 2: Split the dataset into training and test sets ------------</div>
+          <div>set.seed(42)</div>
+          <div class="text-emerald-400 font-medium"># Sample 80% of row numbers from power_data and store in train_rows</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [2]:</span>
+            <input type="text" id="blank-2" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(2)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(2)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-2" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> train_rows &lt;- sample(1:nrow(power_data), size = round(0.80 * nrow(power_data)))
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Create the training set named train using train_rows</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [3]:</span>
+            <input type="text" id="blank-3" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(3)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(3)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-3" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> train &lt;- power_data[train_rows, ]
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Create the test set named test using the remaining rows</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [4]:</span>
+            <input type="text" id="blank-4" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(4)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(4)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-4" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> test &lt;- power_data[-train_rows, ]
+          </div>
+
+          <div class="text-slate-400">
+            cat("Training rows:", nrow(train), "\n") &nbsp;&nbsp;<span class="text-slate-600"># Expected: 120</span><br>
+            cat("Test rows: &nbsp;&nbsp;&nbsp;", nrow(test), "\n") &nbsp;&nbsp;<span class="text-slate-600"># Expected: 30</span>
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 3: Build the regression model -------------------------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Build a multiple regression model named model_bill<br>
+            # Predict monthly_bill using num_occupants, has_aircon, and hours_used<br>
+            # Train on the training set only
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [5]:</span>
+            <input type="text" id="blank-5" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(5)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(5)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-5" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> model_bill &lt;- lm(monthly_bill ~ num_occupants + has_aircon + hours_used, data = train)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Display the full model summary</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [6]:</span>
+            <input type="text" id="blank-6" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(6)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(6)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-6" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> summary(model_bill)
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 4: Evaluate the model on the test set -----------------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Generate bill predictions from model_bill on the test set<br>
+            # Store the predictions in bill_predictions
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [7]:</span>
+            <input type="text" id="blank-7" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(7)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(7)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-7" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> bill_predictions &lt;- predict(model_bill, newdata = test)
+          </div>
+
+          <div>errors &lt;- test$monthly_bill - bill_predictions</div>
+          <div class="text-emerald-400 font-medium">
+            # Compute RMSE: square root of the mean of squared errors<br>
+            # Store in rmse_bill
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [8]:</span>
+            <input type="text" id="blank-8" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(8)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(8)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-8" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> rmse_bill &lt;- sqrt(mean(errors^2))
+          </div>
+          <div class="text-slate-400">cat("RMSE: PHP", round(rmse_bill, 2), "\n")</div>
+
+          <div class="text-slate-500 pt-2"># STEP 5: Predict the bill for a specific room ---------------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Scenario A: a room with 3 occupants, WITH an aircon,<br>
+            # using appliances 8 hours a day<br>
+            # Create a data frame named scenario_A
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [9]:</span>
+            <input type="text" id="blank-9" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(9)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(9)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-9" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> scenario_A &lt;- data.frame(num_occupants = 3, has_aircon = 1, hours_used = 8)
+          </div>
+
+          <div class="text-emerald-400 font-medium">
+            # Use model_bill to predict the bill for scenario_A<br>
+            # Store the result in pred_A
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [10]:</span>
+            <input type="text" id="blank-10" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(10)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(10)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-10" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> pred_A &lt;- predict(model_bill, newdata = scenario_A)
+          </div>
+          <div class="text-slate-400">cat("Predicted Bill (3 occupants, with aircon, 8 hours): PHP", round(pred_A, 0), "\n")</div>
+
+        </div>
+      </div>
+
+      <!-- Problem 2: Internet Renewal Container -->
+      <div id="prob-container-p2" class="problem-view hidden space-y-5">
+        
+        <!-- Scenario Card -->
+        <div class="bg-purple-50 border border-purple-200 rounded-2xl p-5 text-xs text-slate-700 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-purple-950">Problem P-2: Predicting Internet Subscription Renewal (10 points)</h3>
+            <span class="px-2 py-0.5 rounded bg-purple-200 text-purple-900 font-bold">internet_renewal.csv | 200 rows</span>
+          </div>
+          <p>
+            A campus internet provider wants to identify subscribers who are likely to cancel at the end of their contract, so its customer service team can reach out with retention offers before they leave[cite: 11].
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-3 rounded-xl border border-purple-100">
+              <span class="font-bold text-purple-900 block mb-1">Dataset Variables:</span>
+              <ul class="list-disc list-inside space-y-0.5 text-slate-600">
+                <li><code class="code-font text-purple-700">will_renew</code>: Whether the subscriber renewed (1) or cancelled (0)[cite: 11]</li>
+                <li><code class="code-font text-purple-700">monthly_usage_gb</code>: Average data used per month (GB)[cite: 11]</li>
+                <li><code class="code-font text-purple-700">num_complaints</code>: Number of complaints filed during the contract[cite: 11]</li>
+                <li><code class="code-font text-purple-700">months_subscribed</code>: Number of months the subscriber has been with the provider[cite: 11]</li>
+                <li><code class="code-font text-purple-700">avg_speed_mbps</code>: Average measured connection speed (Mbps)[cite: 11]</li>
+              </ul>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-purple-100">
+              <span class="font-bold text-purple-900 block mb-1">Advisory Rules for Customer Service:</span>
+              <ul class="space-y-1 text-slate-600">
+                <li>&bull; <strong class="text-rose-600">Will CANCEL (0)</strong>: Call the subscriber and offer a loyalty discount[cite: 11]</li>
+                <li>&bull; <strong class="text-emerald-600">Will RENEW (1)</strong>: Send the standard renewal reminder[cite: 11]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive R Script Walkthrough P-2 -->
+        <div class="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 text-slate-200 p-5 code-font text-xs space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <span class="text-slate-400 font-medium"><i class="fa-brands fa-r-project text-blue-400 mr-2"></i>internet_renewal_tree.R</span>
+            <button onclick="revealAllInProblem('p2')" class="px-2.5 py-1 bg-purple-600 hover:bg-purple-500 text-white rounded text-[11px] font-sans">
+              Reveal All P-2 Answers
+            </button>
+          </div>
+
+          <div class="text-slate-500"># STEP 1: Load the required libraries ----------------------------</div>
+          <div class="text-emerald-400 font-medium"># Load the library needed to build the decision tree</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [11]:</span>
+            <input type="text" id="blank-11" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(11)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(11)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-11" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> library(rpart)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Load the library needed to draw the decision tree diagram</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [12]:</span>
+            <input type="text" id="blank-12" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(12)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(12)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-12" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> library(rpart.plot)
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 2: Load and prepare the dataset ---------------------------</div>
+          <div>df &lt;- read.csv("internet_renewal.csv")</div>
+          <div class="text-emerald-400 font-medium"># Convert will_renew to a factor (required for classification)</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [13]:</span>
+            <input type="text" id="blank-13" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(13)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(13)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-13" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> df$will_renew &lt;- as.factor(df$will_renew)
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 3: Split into training and test sets ----------------------</div>
+          <div>set.seed(42)</div>
+          <div class="text-emerald-400 font-medium"># Sample 80% of row numbers from df and store in train_rows</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [14]:</span>
+            <input type="text" id="blank-14" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(14)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(14)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-14" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> train_rows &lt;- sample(1:nrow(df), size = round(0.80 * nrow(df)))
+          </div>
+          <div>train &lt;- df[train_rows, ]</div>
+          <div>test  &lt;- df[-train_rows, ]</div>
+
+          <div class="text-slate-500 pt-2"># STEP 4: Build the decision tree classifier ---------------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Build a decision tree named tree_model<br>
+            # Predict will_renew using all four predictors:<br>
+            # monthly_usage_gb, num_complaints, months_subscribed, avg_speed_mbps<br>
+            # Use method = "class" and limit depth to 3 levels
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [15]:</span>
+            <input type="text" id="blank-15" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(15)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(15)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-15" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> tree_model &lt;- rpart(will_renew ~ monthly_usage_gb + num_complaints + months_subscribed + avg_speed_mbps, data = train, method = "class", control = rpart.control(maxdepth = 3))
+          </div>
+          <div>rpart.plot(tree_model, type = 2, extra = 104, main = "Subscription Renewal Decision Tree")</div>
+
+          <div class="text-slate-500 pt-2"># STEP 5: Predictions and confusion matrix -----------------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Generate class predictions from tree_model on the test set<br>
+            # Store in pred_class
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [16]:</span>
+            <input type="text" id="blank-16" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(16)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(16)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-16" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> pred_class &lt;- predict(tree_model, newdata = test, type = "class")
+          </div>
+
+          <div class="text-emerald-400 font-medium">
+            # Build the confusion matrix named conf_matrix<br>
+            # Rows = Predicted, Columns = Actual
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [17]:</span>
+            <input type="text" id="blank-17" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(17)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(17)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-17" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> conf_matrix &lt;- table(Predicted = pred_class, Actual = test$will_renew)
+          </div>
+          <div>print(conf_matrix)</div>
+
+          <div class="text-slate-500 pt-2"># STEP 6: Compute classification metrics -------------------------</div>
+          <div>
+            TN &lt;- conf_matrix[1, 1]<br>
+            FP &lt;- conf_matrix[2, 1]<br>
+            FN &lt;- conf_matrix[1, 2]<br>
+            TP &lt;- conf_matrix[2, 2]
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Compute Accuracy: correct predictions divided by total predictions</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [18]:</span>
+            <input type="text" id="blank-18" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(18)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(18)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-18" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> accuracy &lt;- (TP + TN) / (TP + TN + FP + FN)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Compute Precision: TP divided by all predicted positives</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [19]:</span>
+            <input type="text" id="blank-19" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(19)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(19)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-19" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> precision &lt;- TP / (TP + FP)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Compute Recall: TP divided by all actual positives</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [20]:</span>
+            <input type="text" id="blank-20" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(20)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(20)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-20" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> recall &lt;- TP / (TP + FN)
+          </div>
+
+          <div class="text-slate-400">
+            cat("Accuracy: &nbsp;", round(accuracy * 100, 1), "%\n")<br>
+            cat("Precision:", round(precision * 100, 1), "%\n")<br>
+            cat("Recall: &nbsp;&nbsp;&nbsp;", round(recall * 100, 1), "%\n")
+          </div>
+
+          <div class="text-slate-500 pt-1 text-[11px] border-t border-slate-800">
+            Expected Output:<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Actual<br>
+            Predicted &nbsp;0 &nbsp;1<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0 13 &nbsp;5<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1 &nbsp;3 19<br>
+            Accuracy: 80% | Precision: 86.4% | Recall: 79.2%[cite: 13]
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Problem 3: Jeepney Ridership Container -->
+      <div id="prob-container-p3" class="problem-view hidden space-y-5">
+        
+        <!-- Scenario Card -->
+        <div class="bg-emerald-50 border border-emerald-200 rounded-2xl p-5 text-xs text-slate-700 space-y-3">
+          <div class="flex items-center justify-between">
+            <h3 class="text-sm font-bold text-emerald-950">Problem P-3: Analyzing Monthly Jeepney Ridership (10 points)</h3>
+            <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-bold">jeepney_riders.csv | 48 rows (4 years)</span>
+          </div>
+          <p>
+            A transport cooperative wants to understand the time-based patterns in its monthly ridership: which months are consistently busiest, whether ridership is growing, and how much random variation to expect. It will use this analysis to schedule units and drivers[cite: 13].
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-3 rounded-xl border border-emerald-100">
+              <span class="font-bold text-emerald-900 block mb-1">Dataset Timing:</span>
+              <p class="text-slate-600">The first observation is January, and the observations continue consecutively by month for 4 years. With a yearly seasonal period of 12, the twelve seasonal positions correspond to January through December[cite: 13].</p>
+            </div>
+            <div class="bg-white p-3 rounded-xl border border-emerald-100">
+              <span class="font-bold text-emerald-900 block mb-1">Component Business Meaning:</span>
+              <ul class="space-y-0.5 text-slate-600">
+                <li>&bull; <strong>Trend:</strong> Is ridership growing or declining over the 4 years?[cite: 13]</li>
+                <li>&bull; <strong>Seasonality:</strong> Which months of the year are consistently busiest?[cite: 13]</li>
+                <li>&bull; <strong>Residual:</strong> How much unpredictable variation exists month to month?[cite: 13]</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive R Script Walkthrough P-3 -->
+        <div class="bg-slate-900 rounded-2xl shadow-xl border border-slate-800 text-slate-200 p-5 code-font text-xs space-y-4">
+          <div class="flex justify-between items-center border-b border-slate-800 pb-3">
+            <span class="text-slate-400 font-medium"><i class="fa-brands fa-r-project text-blue-400 mr-2"></i>jeepney_ridership_ts.R</span>
+            <button onclick="revealAllInProblem('p3')" class="px-2.5 py-1 bg-emerald-600 hover:bg-emerald-500 text-white rounded text-[11px] font-sans">
+              Reveal All P-3 Answers
+            </button>
+          </div>
+
+          <div class="text-slate-500"># STEP 1: Load the dataset -----------------------------------------</div>
+          <div>ride_data &lt;- read.csv("jeepney_riders.csv")</div>
+
+          <div class="text-slate-500 pt-2"># STEP 2: Create and decompose the time-series object -------------</div>
+          <div class="text-emerald-400 font-medium">
+            # Create a time-series object named ts_riders from<br>
+            # ride_data$monthly_riders. The data has a yearly<br>
+            # repeating pattern; use 12 months per cycle
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [21]:</span>
+            <input type="text" id="blank-21" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(21)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(21)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-21" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> ts_riders &lt;- ts(ride_data$monthly_riders, frequency = 12)
+          </div>
+
+          <div class="text-emerald-400 font-medium">
+            # Decompose ts_riders into trend, seasonality, and residual<br>
+            # Store the result in decomp
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [22]:</span>
+            <input type="text" id="blank-22" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(22)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(22)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-22" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> decomp &lt;- decompose(ts_riders)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Display all four decomposition panels</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [23]:</span>
+            <input type="text" id="blank-23" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(23)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(23)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-23" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> plot(decomp)
+          </div>
+
+          <div class="text-emerald-400 font-medium">
+            # Extract and print the seasonal component for the first 12 months<br>
+            # (one full yearly cycle: Month 1 = January, Month 12 = December)
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [24]:</span>
+            <input type="text" id="blank-24" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(24)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(24)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-24" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> decomp$seasonal[1:12]
+          </div>
+
+          <div class="text-slate-500 pt-2"># STEP 3: Compute the 3-month simple moving average ---------------</div>
+          <div class="text-emerald-400 font-medium"># Store the total number of observations in n</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [25]:</span>
+            <input type="text" id="blank-25" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(25)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(25)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-25" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> n &lt;- length(ride_data$monthly_riders)
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Create a vector named sma3 filled with NA values, length n</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [26]:</span>
+            <input type="text" id="blank-26" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(26)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(26)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-26" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> sma3 &lt;- rep(NA, n)
+          </div>
+
+          <div>for (i in 3:n) {</div>
+          <div class="text-emerald-400 font-medium pl-4">
+            # For each month from month 3 onward, compute the mean<br>
+            # of that month and the 2 months before it
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2 ml-4">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [27]:</span>
+            <input type="text" id="blank-27" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(27)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(27)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-27" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px] ml-4">
+            <span class="text-slate-400">Standard R statement:</span> sma3[i] &lt;- mean(ride_data$monthly_riders[(i - 2):i])
+          </div>
+          <div>}</div>
+
+          <div class="text-slate-500 pt-2"># STEP 4: Plot the series with the moving average overlay ------</div>
+          <div class="text-emerald-400 font-medium">
+            # Plot ride_data$monthly_riders as a gray70 line<br>
+            # Use main = "Monthly Riders with 3-Month Moving Average"<br>
+            # Use ylab = "Riders" and xlab = "Month"
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [28]:</span>
+            <input type="text" id="blank-28" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(28)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(28)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-28" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> plot(ride_data$monthly_riders, type = "l", col = "gray70", main = "Monthly Riders with 3-Month Moving Average", ylab = "Riders", xlab = "Month")
+          </div>
+
+          <div class="text-emerald-400 font-medium"># Overlay the 3-month moving average as a darkred line, line width 2</div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [29]:</span>
+            <input type="text" id="blank-29" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(29)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(29)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-29" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> lines(sma3, col = "darkred", lwd = 2)
+          </div>
+
+          <div class="text-emerald-400 font-medium">
+            # Add a legend in the top-left corner showing "Monthly" in gray70<br>
+            # and "3-Month SMA" in darkred, with line widths 1 and 2
+          </div>
+          <div class="p-3 bg-slate-950 rounded-xl border border-slate-800 flex flex-col sm:flex-row gap-2">
+            <span class="text-amber-400 font-bold shrink-0 self-center">Blank [30]:</span>
+            <input type="text" id="blank-30" placeholder='Type complete statement here...' class="flex-1 bg-slate-900 border border-slate-700 text-emerald-300 px-3 py-1.5 rounded outline-none focus:border-indigo-500">
+            <button onclick="checkBlank(30)" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded font-sans text-xs">Check</button>
+            <button onclick="toggleBlankAnswer(30)" class="px-2.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-indigo-300 rounded font-sans text-xs"><i class="fa-regular fa-eye"></i></button>
+          </div>
+          <div id="sol-30" class="hidden p-2 rounded bg-indigo-950/80 text-emerald-400 border border-indigo-800 text-[11px]">
+            <span class="text-slate-400">Standard R statement:</span> legend("topleft", legend = c("Monthly", "3-Month SMA"), col = c("gray70", "darkred"), lwd = c(1, 2))
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 3: INTERACTIVE PRACTICE EXAM (20 QUESTIONS) -->
+    <!-- ========================================================================= -->
+    <section id="view-practice-exam" class="hidden space-y-6">
+      
+      <!-- Exam Control Bar -->
+      <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-wrap justify-between items-center gap-4">
+        <div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-indigo-600">Comprehensive Mock Exam</span>
+          <h2 class="text-lg font-bold text-slate-900">BAT 402 Midterm Mastery Test (20 Qs)</h2>
+        </div>
+        <div class="flex items-center space-x-4 text-xs font-medium">
+          <div class="bg-slate-100 px-3 py-1.5 rounded-lg text-slate-700">
+            Progress: <span id="exam-progress" class="font-bold text-indigo-700">0/20</span>
+          </div>
+          <div class="bg-emerald-50 px-3 py-1.5 rounded-lg text-emerald-800">
+            Score: <span id="exam-score" class="font-bold">0</span> / 20 (<span id="exam-percent">0%</span>)
+          </div>
+          <button onclick="resetExam()" class="px-3 py-1.5 bg-slate-200 hover:bg-slate-300 text-slate-700 rounded-lg transition">
+            <i class="fa-solid fa-arrow-rotate-right mr-1"></i> Reset
+          </button>
+        </div>
+      </div>
+
+      <!-- Exam Questions List -->
+      <div id="quiz-list" class="space-y-4">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- TAB 4: PART II MANUAL CALCULATION WORKBENCH (Q31-Q34) -->
+    <!-- ========================================================================= -->
+    <section id="view-part2-calc" class="hidden space-y-6">
+      
+      <!-- Scenario & Instructions Header Exactly as in PDF -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <div>
+          <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">SAMPLE — PART II (20 points)</span>
+          <h2 class="text-lg font-bold text-slate-900 mt-0.5">REGRESSION PREDICTION COMPUTATION</h2>
+        </div>
+        
+        <div class="p-3 bg-amber-50 border-l-4 border-amber-500 rounded-r-xl text-xs text-amber-900">
+          <strong>Directions:</strong> Show the formula, substitution and final answer for each item. No formula, no credit[cite: 1, 14].
+        </div>
+
+        <p class="text-xs text-slate-700 leading-relaxed">
+          After building the model in Problem P-1 on a later semester's data, the housing office ran <code class="code-font text-indigo-700 bg-slate-100 px-1 py-0.5 rounded">summary(model_bill)</code> and obtained the coefficients below[cite: 14]. Use them, together with the Advisory Rules for the Housing Office in Problem P-1, to answer each item[cite: 10, 14].
+        </p>
+
+        <!-- PDF Coefficient Table -->
+        <div class="max-w-xs">
+          <table class="w-full text-xs border border-slate-300">
+            <thead class="bg-slate-100 text-slate-800 font-semibold">
+              <tr>
+                <th class="p-2 border text-left">Coefficients</th>
+                <th class="p-2 border text-right">Estimate</th>
+              </tr>
+            </thead>
+            <tbody class="code-font text-slate-700">
+              <tr>
+                <td class="p-1.5 border text-left">(Intercept)</td>
+                <td class="p-1.5 border text-right">320.00</td>
+              </tr>
+              <tr>
+                <td class="p-1.5 border text-left">num_occupants</td>
+                <td class="p-1.5 border text-right">180.00</td>
+              </tr>
+              <tr>
+                <td class="p-1.5 border text-left">has_aircon</td>
+                <td class="p-1.5 border text-right">950.00</td>
+              </tr>
+              <tr>
+                <td class="p-1.5 border text-left">hours_used</td>
+                <td class="p-1.5 border text-right">45.00</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Question Cards 31 to 34 Matching PDF Layout -->
+      <div class="space-y-5">
+
+        <!-- Question 31 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h3 class="text-xs font-bold text-slate-900">
+              31. Predict the monthly bill for a room with 4 occupants, WITH an aircon, using appliances 10 hours a day. Show your full computation. (5 pts)[cite: 14]
+            </h3>
+            <button onclick="toggleAnswer(31)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
+              <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
+            </button>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div>
+              <span class="font-semibold text-slate-700">Formula:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 14]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Substitution:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 14]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 14]
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Recommended Action:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 14]</div>
+            </div>
+          </div>
+
+          <!-- Answer Key for Q31 -->
+          <div id="hand-ans-31" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(4) + 950.00(1) + 45.00(10)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-amber-300 font-bold">2,440</span></div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-amber-400 font-bold">Moderate usage — include a reminder in the monthly bulletin</span>[cite: 10]</div>
+          </div>
+        </div>
+
+        <!-- Question 32 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h3 class="text-xs font-bold text-slate-900">
+              32. Predict the monthly bill for a room with 2 occupants, WITHOUT an aircon, using appliances 6 hours a day. Show your full computation. (5 pts)[cite: 15]
+            </h3>
+            <button onclick="toggleAnswer(32)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
+              <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
+            </button>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div>
+              <span class="font-semibold text-slate-700">Formula:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Substitution:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 15]
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Recommended Action:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 15]</div>
+            </div>
+          </div>
+
+          <!-- Answer Key for Q32 -->
+          <div id="hand-ans-32" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(2) + 950.00(0) + 45.00(6)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-emerald-300 font-bold">950</span></div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-emerald-400 font-bold">Normal usage — no action needed</span>[cite: 10]</div>
+          </div>
+        </div>
+
+        <!-- Question 33 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h3 class="text-xs font-bold text-slate-900">
+              33. Predict the monthly bill for a room with 5 occupants, WITH an aircon, using appliances 14 hours a day. Show your full computation. (5 pts)[cite: 15]
+            </h3>
+            <button onclick="toggleAnswer(33)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
+              <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
+            </button>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div>
+              <span class="font-semibold text-slate-700">Formula:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Substitution:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Predicted Bill = PHP</span>
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">__________</span> (1 pt)[cite: 15]
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Recommended Action:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">____________________________ (1 pt)[cite: 15]</div>
+            </div>
+          </div>
+
+          <!-- Answer Key for Q33 -->
+          <div id="hand-ans-33" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">= 320.00 + 180.00(5) + 950.00(1) + 45.00(14)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Predicted Bill = PHP (1 pt):</span> <span class="text-rose-400 font-bold">2,800</span></div>
+            <div><span class="text-slate-400 font-sans">Recommended Action (1 pt):</span> <span class="text-rose-400 font-bold">High usage — send an energy-saving notice</span>[cite: 10]</div>
+          </div>
+        </div>
+
+        <!-- Question 34 -->
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm space-y-3">
+          <div class="flex items-center justify-between border-b pb-2">
+            <h3 class="text-xs font-bold text-slate-900 leading-relaxed">
+              34. The housing office wants to know when a room reaches High usage (PHP 2,500). For a room with 3 occupants WITH an aircon, what is the minimum whole number of hours per day the appliances must be used for the predicted bill to reach PHP 2,500? Show your full computation. (5 pts)[cite: 15]
+            </h3>
+            <button onclick="toggleAnswer(34)" class="text-xs text-indigo-600 hover:text-indigo-800 font-medium">
+              <i class="fa-regular fa-eye mr-1"></i> Reveal Answer
+            </button>
+          </div>
+
+          <div class="space-y-2 text-xs">
+            <div>
+              <span class="font-semibold text-slate-700">Formula:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________________ (1 pt)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Substitution:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">___________________________________ (2 pts)[cite: 15]</div>
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Percentage Error =</span>
+              <span class="border-b border-dashed border-slate-300 px-8 py-0.5 text-slate-400">________</span> % (1 pt)[cite: 15]
+            </div>
+            <div>
+              <span class="font-semibold text-slate-700">Interpretation:</span>
+              <div class="border-b border-dashed border-slate-300 py-1 text-slate-400">________________________________ (1 pt)[cite: 15]</div>
+            </div>
+          </div>
+
+          <!-- Answer Key for Q34 -->
+          <div id="hand-ans-34" class="hidden p-4 bg-slate-900 rounded-xl text-xs space-y-1.5 code-font text-slate-200">
+            <div><span class="text-slate-400 font-sans">Formula (1 pt):</span> <span class="text-emerald-300">Predicted Monthly Bill = 320.00 + 180.00(num_occupants) + 950.00(has_aircon) + 45.00(hours_used)</span>[cite: 14]</div>
+            <div><span class="text-slate-400 font-sans">Substitution (2 pts):</span> <span class="text-sky-300">2,500 = 320.00 + 180.00(3) + 950.00(1) + 45.00(hours_used) &rarr; 2,500 = 1,810 + 45.00(hours_used)</span>[cite: 14, 15]</div>
+            <div><span class="text-slate-400 font-sans">Solving for hours:</span> <span class="text-indigo-300">hours_used = (2,500 - 1,810) / 45 = 690 / 45 &approx; 15.33 hours</span></div>
+            <div><span class="text-slate-400 font-sans">Percentage Error / Answer (1 pt):</span> <span class="text-amber-300 font-bold">16 whole hours</span> (at 15 hrs bill = PHP 2,485; at 16 hrs bill = PHP 2,530 &ge; 2,500)[cite: 10]</div>
+            <div><span class="text-slate-400 font-sans">Interpretation (1 pt):</span> <span class="text-emerald-400 font-bold">Appliances must be used for at least 16 whole hours per day to reach High usage and trigger an energy-saving notice.</span>[cite: 10]</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Interactive Playground Sandbox -->
+      <div class="bg-white p-6 rounded-2xl border border-slate-200 shadow-sm space-y-4">
+        <h3 class="text-sm font-bold text-slate-800">Custom Prediction Sandbox (Test Any Dorm Scenario)</h3>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+          <div>
+            <label class="block text-slate-600 font-medium mb-1">Occupants</label>
+            <input type="number" id="calc-occupants" value="4" min="1" max="10" oninput="calculateDormBill()" class="w-full px-2.5 py-1.5 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+          </div>
+          <div>
+            <label class="block text-slate-600 font-medium mb-1">Has Aircon (0/1)</label>
+            <select id="calc-aircon" onchange="calculateDormBill()" class="w-full px-2.5 py-1.5 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+              <option value="1" selected>1 (Yes, With AC)</option>
+              <option value="0">0 (No, Without AC)</option>
+            </select>
+          </div>
+          <div>
+            <label class="block text-slate-600 font-medium mb-1">Hours/Day</label>
+            <input type="number" id="calc-hours" value="10" min="0" max="24" oninput="calculateDormBill()" class="w-full px-2.5 py-1.5 border rounded-lg focus:ring-2 focus:ring-indigo-500">
+          </div>
+        </div>
+
+        <div class="p-4 bg-slate-900 text-slate-100 rounded-xl text-xs space-y-2 code-font">
+          <div><span class="text-slate-400">Substitution:</span> <span id="dorm-sub-line" class="text-sky-300"></span></div>
+          <div><span class="text-slate-400">Computation:</span> <span id="dorm-math-line" class="text-indigo-300"></span></div>
+          <div><span class="text-slate-400">Action:</span> <span id="dorm-action-badge" class="inline-block mt-1 px-2.5 py-0.5 rounded font-bold text-xs bg-amber-500 text-slate-900"></span></div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-4 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4">
+      BAT 402: Fundamentals of Analytics Modeling &bull; Midterm Reviewer & Exam Simulator
+    </div>
+  </footer>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC -->
+  <!-- ========================================================================= -->
+  <script>
+    // Tab Switching
+    function switchTab(tabId) {
+      const views = ['study-guide', 'code-drill', 'practice-exam', 'part2-calc'];
+      views.forEach(v => {
+        document.getElementById(`view-${v}`).classList.add('hidden');
+        const tabBtn = document.getElementById(`tab-${v}`);
+        tabBtn.classList.remove('bg-indigo-700', 'text-white', 'shadow-sm');
+        tabBtn.classList.add('text-indigo-200');
+      });
+
+      document.getElementById(`view-${tabId}`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      activeBtn.classList.add('bg-indigo-700', 'text-white', 'shadow-sm');
+      activeBtn.classList.remove('text-indigo-200');
+    }
+
+    // Problem Script Selector in Part I
+    function showProblem(probId) {
+      document.querySelectorAll('.problem-view').forEach(p => p.classList.add('hidden'));
+      document.getElementById(`prob-container-${probId}`).classList.remove('hidden');
+
+      document.querySelectorAll('.problem-tab-btn').forEach(btn => {
+        btn.classList.remove('bg-indigo-700', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-slate-100', 'text-slate-700');
+      });
+      const active = document.getElementById(`p-btn-${probId}`);
+      active.classList.add('bg-indigo-700', 'text-white', 'shadow-sm');
+      active.classList.remove('bg-slate-100', 'text-slate-700');
+    }
+
+    // Standard Expected Statements for all 30 Blanks
+    const standardAnswers = {
+      1: 'power_data <- read.csv("dorm_power.csv")',
+      2: 'train_rows <- sample(1:nrow(power_data), size = round(0.80 * nrow(power_data)))',
+      3: 'train <- power_data[train_rows, ]',
+      4: 'test <- power_data[-train_rows, ]',
+      5: 'model_bill <- lm(monthly_bill ~ num_occupants + has_aircon + hours_used, data = train)',
+      6: 'summary(model_bill)',
+      7: 'bill_predictions <- predict(model_bill, newdata = test)',
+      8: 'rmse_bill <- sqrt(mean(errors^2))',
+      9: 'scenario_A <- data.frame(num_occupants = 3, has_aircon = 1, hours_used = 8)',
+      10: 'pred_A <- predict(model_bill, newdata = scenario_A)',
+      11: 'library(rpart)',
+      12: 'library(rpart.plot)',
+      13: 'df$will_renew <- as.factor(df$will_renew)',
+      14: 'train_rows <- sample(1:nrow(df), size = round(0.80 * nrow(df)))',
+      15: 'tree_model <- rpart(will_renew ~ monthly_usage_gb + num_complaints + months_subscribed + avg_speed_mbps, data = train, method = "class", control = rpart.control(maxdepth = 3))',
+      16: 'pred_class <- predict(tree_model, newdata = test, type = "class")',
+      17: 'conf_matrix <- table(Predicted = pred_class, Actual = test$will_renew)',
+      18: 'accuracy <- (TP + TN) / (TP + TN + FP + FN)',
+      19: 'precision <- TP / (TP + FP)',
+      20: 'recall <- TP / (TP + FN)',
+      21: 'ts_riders <- ts(ride_data$monthly_riders, frequency = 12)',
+      22: 'decomp <- decompose(ts_riders)',
+      23: 'plot(decomp)',
+      24: 'decomp$seasonal[1:12]',
+      25: 'n <- length(ride_data$monthly_riders)',
+      26: 'sma3 <- rep(NA, n)',
+      27: 'sma3[i] <- mean(ride_data$monthly_riders[(i - 2):i])',
+      28: 'plot(ride_data$monthly_riders, type = "l", col = "gray70", main = "Monthly Riders with 3-Month Moving Average", ylab = "Riders", xlab = "Month")',
+      29: 'lines(sma3, col = "darkred", lwd = 2)',
+      30: 'legend("topleft", legend = c("Monthly", "3-Month SMA"), col = c("gray70", "darkred"), lwd = c(1, 2))'
+    };
+
+    function toggleBlankAnswer(num) {
+      const box = document.getElementById(`sol-${num}`);
+      box.classList.toggle('hidden');
+    }
+
+    function revealAllInProblem(probId) {
+      let start = 1, end = 10;
+      if (probId === 'p2') { start = 11; end = 20; }
+      if (probId === 'p3') { start = 21; end = 30; }
+      for (let i = start; i <= end; i++) {
+        document.getElementById(`sol-${i}`).classList.remove('hidden');
+      }
+    }
+
+    function checkBlank(num) {
+      const input = document.getElementById(`blank-${num}`);
+      const val = input.value.trim();
+      const standard = standardAnswers[num];
+      
+      const cleanUser = val.replace(/\s+/g, '').replace(/"/g, "'");
+      const cleanTarget = standard.replace(/\s+/g, '').replace(/"/g, "'");
+
+      if (cleanUser === cleanTarget) {
+        input.classList.remove('border-slate-700', 'border-rose-500');
+        input.classList.add('border-emerald-500', 'bg-emerald-950/40');
+      } else {
+        input.classList.remove('border-slate-700', 'border-emerald-500');
+        input.classList.add('border-amber-500');
+        document.getElementById(`sol-${num}`).classList.remove('hidden');
+      }
+    }
+
+    function toggleAnswer(num) {
+      const box = document.getElementById(`hand-ans-${num}`);
+      if (box) {
+        box.classList.toggle('hidden');
+      }
+    }
+
+    // Pre-Exam Checklist Items
+    const checklistItems = [
+      "Distinguish regression vs. classification vs. time series by outcome variable",
+      "Write 80/20 train-test split in R with sample() and the essential comma",
+      "Explain why models must never be evaluated on the training dataset",
+      "Convert classification outcome to a factor using as.factor() before rpart()",
+      "Write multiple regression formula lm(Y ~ X1 + X2, data = train)",
+      "Compute RMSE from test errors: sqrt(mean(errors^2))",
+      "Predict new observations using a single-row data.frame() in predict()",
+      "Draw the perfect-prediction line on an actual vs. predicted plot (abline(0, 1))",
+      "Build confusion matrix using table(Predicted, Actual) and locate TN, FP, FN, TP",
+      "Calculate Accuracy, Precision, and Recall and choose between Precision and Recall",
+      "Set ts() frequency correctly: 7 for daily/weekly, 12 for monthly/yearly",
+      "Decompose time series and interpret trend, seasonal, and residual components",
+      "Write moving average loop body: sma[i] <- mean(data[(i-(k-1)):i])",
+      "Substitute values into regression equation showing EVERY step including 0 terms"
+    ];
+
+    function renderChecklist() {
+      const container = document.getElementById('checklist-container');
+      container.innerHTML = checklistItems.map((item) => `
+        <label class="flex items-start space-x-2.5 p-2 rounded-lg hover:bg-slate-50 cursor-pointer border border-transparent hover:border-slate-200 transition">
+          <input type="checkbox" class="mt-0.5 rounded text-indigo-600 focus:ring-indigo-500 h-4 w-4">
+          <span class="text-slate-700 select-none">${item}</span>
+        </label>
+      `).join('');
+    }
+
+    // 20 Mock Exam Questions covering all 5 areas
+    const examQuestions = [
+      {
+        id: 1,
+        topic: "Model Selection",
+        question: "A delivery company wants to predict how many minutes a delivery will take based on route distance and current traffic congestion. Which modeling technique is appropriate?",
+        options: [
+          { text: "Classification", correct: false, expl: "Classification is used when the outcome is a categorical group (e.g., delivered on-time vs late)." },
+          { text: "Multiple Linear Regression", correct: true, expl: "The outcome (minutes) is a continuous numerical value, making regression the appropriate choice." },
+          { text: "Time-Series Decomposition", correct: false, expl: "Although time is measured, this is predicting an individual trip duration from predictors, not a regular chronological sequence." },
+          { text: "Logistic Factor Trees", correct: false, expl: "Logistic trees classify categorical outcomes." }
+        ]
+      },
+      {
+        id: 2,
+        topic: "Model Selection",
+        question: "An email provider evaluates each incoming email to decide whether to place it in the inbox or quarantine it as spam. Which model type fits this scenario?",
+        options: [
+          { text: "Regression", correct: false, expl: "Regression predicts a numeric amount or score." },
+          { text: "Time-Series Forecasting", correct: false, expl: "There is no regular periodic interval cycle being forecasted here." },
+          { text: "Classification", correct: true, expl: "The outcome variable is binary/categorical: 'spam' versus 'not spam'." },
+          { text: "Moving Average Smoothing", correct: false, expl: "Moving average is a technique for smoothing time-series trends." }
+        ]
+      },
+      {
+        id: 3,
+        topic: "Model Selection",
+        question: "A power utility aims to forecast the next 12 months of city electricity consumption using 6 years of recorded monthly usage. Which model type should be chosen?",
+        options: [
+          { text: "Classification", correct: false, expl: "Electricity consumption is continuous numeric, not a categorical class." },
+          { text: "Time-Series Forecasting", correct: true, expl: "The outcome is a sequence of numeric values ordered regularly over time (monthly)." },
+          { text: "Unsupervised Clustering", correct: false, expl: "Forecasting requires supervised time-series modeling." },
+          { text: "Simple Binary Regression", correct: false, expl: "Standard regression ignores chronological autocorrelation and seasonal cycles without lag terms." }
+        ]
+      },
+      {
+        id: 4,
+        topic: "Train-Test Split",
+        question: "Why is it strictly necessary to split data into training and test sets rather than evaluating the model on the full original dataset?",
+        options: [
+          { text: "Because R's lm() and rpart() algorithms will throw a syntax error if run on 100% of the data.", correct: false, expl: "R can run on full datasets, but doing so leads to severe evaluation bias." },
+          { text: "To assess true generalization performance because a model tested on its training data has already 'seen the answers'.", correct: true, expl: "Evaluating on training data hides overfitting; the test set simulates unseen future cases." },
+          { text: "To automatically impute missing NA values during data pre-processing.", correct: false, expl: "Splitting has nothing to do with handling missing values." },
+          { text: "To guarantee that the test RMSE is always lower than the training RMSE.", correct: false, expl: "Test RMSE is almost always higher than training RMSE due to overfitting." }
+        ]
+      },
+      {
+        id: 5,
+        topic: "Train-Test Split",
+        question: "In R, which line correctly generates a training subset from an 80% sampled vector of row indices named `train_rows` from data frame `df`?",
+        options: [
+          { text: "train <- df[train_rows]", correct: false, expl: "Missing the comma! In R, `df[train_rows]` attempts to select columns." },
+          { text: "train <- df[train_rows, ]", correct: true, expl: "Row index before comma, blank after comma selects all columns for those rows." },
+          { text: "train <- df[, train_rows]", correct: false, expl: "Placing the index after the comma slices columns instead of rows." },
+          { text: "train <- sample(df, 0.80)", correct: false, expl: "sample() requires row indices, not passing the data frame directly." }
+        ]
+      },
+      {
+        id: 6,
+        topic: "Train-Test Split",
+        question: "If a dataset has 300 rows and is split 70% for training and 30% for testing using `round(0.70 * nrow(df))`, how many rows are in `train` and `test`?",
+        options: [
+          { text: "Train: 240, Test: 60", correct: false, expl: "240/60 represents an 80/20 split on 300 rows." },
+          { text: "Train: 210, Test: 90", correct: true, expl: "0.70 * 300 = 210 training rows; 300 - 210 = 90 test rows." },
+          { text: "Train: 200, Test: 100", correct: false, expl: "This would be a 66.7% / 33.3% split." },
+          { text: "Train: 150, Test: 150", correct: false, expl: "This is a 50/50 split." }
+        ]
+      },
+      {
+        id: 7,
+        topic: "Multiple Regression",
+        question: "Which R statement builds a multiple linear regression predicting `sales` using `num_orders`, `is_holiday`, and `month` from the training dataset?",
+        options: [
+          { text: "model <- lm(sales = num_orders + is_holiday + month, data = train)", correct: false, expl: "R formulas use the tilde `~`, not the equals sign `=`." },
+          { text: "model <- lm(sales ~ num_orders + is_holiday + month, data = train)", correct: true, expl: "Correct R formula syntax: `outcome ~ predictor1 + predictor2 + ...`, trained on `data = train`." },
+          { text: "model <- rpart(sales ~ num_orders + is_holiday + month, method = 'lm')", correct: false, expl: "rpart() builds tree models, not multiple linear regression." },
+          { text: "model <- predict(sales ~ num_orders + is_holiday + month, data = train)", correct: false, expl: "predict() evaluates an already fitted model, it does not fit one." }
+        ]
+      },
+      {
+        id: 8,
+        topic: "Multiple Regression",
+        question: "Given a vector of prediction residuals `errors <- test$sales - predictions`, which R code computes the Root Mean Squared Error (RMSE)?",
+        options: [
+          { text: "rmse <- mean(sqrt(errors^2))", correct: false, expl: "Taking the square root before the mean computes Mean Absolute Error (MAE), not RMSE." },
+          { text: "rmse <- sqrt(mean(errors^2))", correct: true, expl: "Read inside-out: square errors (`errors^2`), take their average (`mean`), then square root (`sqrt`)." },
+          { text: "rmse <- sqrt(sum(errors)) / nrow(test)", correct: false, expl: "Errors must be squared first, otherwise positive and negative errors cancel out." },
+          { text: "rmse <- sd(errors) / sqrt(length(errors))", correct: false, expl: "This calculates the standard error of the mean, not RMSE." }
+        ]
+      },
+      {
+        id: 9,
+        topic: "Multiple Regression",
+        question: "In an actual vs. predicted plot, which command draws the ideal reference line where actual equals predicted?",
+        options: [
+          { text: "line(0, 1, col = 'red')", correct: false, expl: "The command in base R graphics is abline(), not line()." },
+          { text: "abline(0, 1, col = 'red', lty = 2)", correct: true, expl: "abline(a=0, b=1) plots the line Y = X (intercept 0, slope 1) where predictions are 100% perfect." },
+          { text: "abline(mean(test$sales), col = 'red')", correct: false, expl: "This plots a horizontal line at the mean value of sales." },
+          { text: "plot(ideal = TRUE, col = 'red')", correct: false, expl: "No such parameter exists in R's plot() function." }
+        ]
+      },
+      {
+        id: 10,
+        topic: "Decision Trees",
+        question: "What CRITICAL data preparation step is mandatory in R before building a classification decision tree with `rpart()`?",
+        options: [
+          { text: "Normalizing all numeric variables between 0 and 1", correct: false, expl: "Decision trees are invariant to monotonic numeric scaling." },
+          { text: "Converting the target outcome column to a factor using `as.factor()`", correct: true, expl: "If the target is not a factor, rpart will treat 0/1 as continuous numbers and fit a regression tree instead of classification." },
+          { text: "Removing all binary indicator columns", correct: false, expl: "Decision trees handle binary indicator features effectively." },
+          { text: "Running summary() on all columns", correct: false, expl: "Running summary() is diagnostic, not a mandatory transformation." }
+        ]
+      },
+      {
+        id: 11,
+        topic: "Decision Trees",
+        question: "In `rpart.control(maxdepth = 3)`, what is the primary purpose of setting `maxdepth`?",
+        options: [
+          { text: "To ensure that the confusion matrix has exactly 3 rows.", correct: false, expl: "The dimensions of the confusion matrix depend on the number of classes, not depth." },
+          { text: "To limit questions to 3 levels, keeping the tree interpretable and preventing overfitting on training data.", correct: true, expl: "Restricting tree depth stops it from memorizing specific training rows and keeps rules readable." },
+          { text: "To force the tree to pick only the top 3 predictor columns in the dataset.", correct: false, expl: "Maxdepth restricts tree level depth, not which specific variables are considered." },
+          { text: "To split the dataset into 3 random subsets.", correct: false, expl: "Maxdepth is an rpart tree hyperparameter, unrelated to data splitting." }
+        ]
+      },
+      {
+        id: 12,
+        topic: "Decision Trees",
+        question: "When evaluating a classification tree on the test set, what argument must be supplied to `predict()` to return class labels rather than probabilities?",
+        options: [
+          { text: "type = 'response'", correct: false, expl: "'response' is used in glm() logistic models to return probabilities." },
+          { text: "type = 'class'", correct: true, expl: "Setting `type = 'class'` forces rpart's predict method to output class predictions (e.g., 0 or 1)." },
+          { text: "output = 'factor'", correct: false, expl: "This is not a valid argument for predict.rpart." },
+          { text: "method = 'decision'", correct: false, expl: "Method is passed to rpart(), not predict()." }
+        ]
+      },
+      {
+        id: 13,
+        topic: "Confusion Matrix",
+        question: "In R, a confusion matrix is built using `conf_matrix <- table(Predicted = pred_class, Actual = test$approved)`. Which element corresponds to False Positives (FP)?",
+        options: [
+          { text: "conf_matrix[1, 1]", correct: false, expl: "Row 1, Col 1 is Predicted 0 and Actual 0, which is True Negative (TN)." },
+          { text: "conf_matrix[1, 2]", correct: false, expl: "Row 1, Col 2 is Predicted 0 and Actual 1, which is False Negative (FN)." },
+          { text: "conf_matrix[2, 1]", correct: true, expl: "Row 2 (Predicted 1) and Column 1 (Actual 0) represents False Positives (FP)." },
+          { text: "conf_matrix[2, 2]", correct: false, expl: "Row 2, Col 2 is Predicted 1 and Actual 1, which is True Positive (TP)." }
+        ]
+      },
+      {
+        id: 14,
+        topic: "Confusion Matrix",
+        question: "A confusion matrix reports: TN = 20, FP = 5, FN = 8, TP = 47. What is the Precision of this model?",
+        options: [
+          { text: "85.5%", correct: false, expl: "85.5% is Recall: 47 / (47 + 8) = 47/55." },
+          { text: "90.4%", correct: true, expl: "Precision = TP / (TP + FP) = 47 / (47 + 5) = 47/52 ≈ 90.38%." },
+          { text: "83.8%", correct: false, expl: "83.8% is Accuracy: (47 + 20) / 80 = 67/80." },
+          { text: "75.0%", correct: false, expl: "This does not match any standard confusion matrix metric here." }
+        ]
+      },
+      {
+        id: 15,
+        topic: "Confusion Matrix",
+        question: "A university health clinic builds a predictive model to identify students at immediate risk of severe clinical depression. Which metric should they prioritize?",
+        options: [
+          { text: "Precision, because reaching out to a healthy student is very embarrassing.", correct: false, expl: "A false alarm here is benign compared to missing an at-risk student." },
+          { text: "Recall, because failing to identify a student at risk (False Negative) has severe consequences.", correct: true, expl: "When missing a positive case carries heavy safety risks, Recall must be maximized." },
+          { text: "Accuracy, because high overall percentage is always the best single metric.", correct: false, expl: "Accuracy is deceptive with imbalanced data where most students are healthy." },
+          { text: "Specificity, to ensure healthy students are never sent wellness questionnaires.", correct: false, expl: "False negatives carry far greater risk than a simple questionnaire." }
+        ]
+      },
+      {
+        id: 16,
+        topic: "Time Series",
+        question: "When creating a time series object in R using `ts(data, frequency = ...)`, what frequency value must be used for monthly data that exhibits a yearly seasonal cycle?",
+        options: [
+          { text: "7", correct: false, expl: "7 is used for daily data with a weekly pattern." },
+          { text: "12", correct: true, expl: "A yearly repeating pattern observed on monthly data has 12 periods per year." },
+          { text: "52", correct: false, expl: "52 is used for weekly data repeating on a yearly cycle." },
+          { text: "365", correct: false, expl: "365 is for daily data on a yearly cycle." }
+        ]
+      },
+      {
+        id: 17,
+        topic: "Time Series",
+        question: "In classical additive time-series decomposition `plot(decompose(ts_data))`, which panel isolates regular repeating fluctuations around the average?",
+        options: [
+          { text: "Trend", correct: false, expl: "Trend shows the smoothed, long-term direction over years." },
+          { text: "Seasonal", correct: true, expl: "The seasonal component captures fixed recurring intra-cycle patterns (e.g., day of week or month of year)." },
+          { text: "Random", correct: false, expl: "Random (residual) captures unexplained irregular noise left over." },
+          { text: "Observed (x)", correct: false, expl: "Observed is the raw, unseparated original series." }
+        ]
+      },
+      {
+        id: 18,
+        topic: "Time Series",
+        question: "For a time series with n monthly records, what is the correct for-loop window to compute a 3-month simple moving average (`sma3[i]`) from index i=3 to n?",
+        options: [
+          { text: "mean(data[(i - 3):i])", correct: false, expl: "This window contains 4 elements: (i-3), (i-2), (i-1), i." },
+          { text: "mean(data[(i - 2):i])", correct: true, expl: "For a k-period moving average, the window spans `(i - (k - 1)):i`. For k=3: `(i - 2):i`." },
+          { text: "mean(data[i:(i + 2)])", correct: false, expl: "This looks into the future, creating lookahead bias." },
+          { text: "sum(data[1:i]) / 3", correct: false, expl: "This sums all historical points from 1 to i, rather than a rolling window of 3." }
+        ]
+      },
+      {
+        id: 19,
+        topic: "Regression Hand-Calc",
+        question: "A regression equation is: Sales = 120 + 3.40(orders) + 85(is_holiday) - 1.20(temp). What is the predicted sales on a holiday with 50 orders and a temperature of 30?",
+        options: [
+          { text: "339 pieces", correct: true, expl: "120 + 3.40(50) + 85(1) - 1.20(30) = 120 + 170 + 85 - 36 = 339." },
+          { text: "254 pieces", correct: false, expl: "This incorrectly omits the holiday term: 120 + 170 - 36 = 254." },
+          { text: "411 pieces", correct: false, expl: "This added the temperature effect instead of subtracting: 120 + 170 + 85 + 36 = 411." },
+          { text: "375 pieces", correct: false, expl: "Miscalculating 3.40 * 50 or arithmetic error." }
+        ]
+      },
+      {
+        id: 20,
+        topic: "Regression Interpretation",
+        question: "In the bakery regression model, the predictor `avg_temp` has a p-value of p = 0.410. What does this indicate to the bakery manager?",
+        options: [
+          { text: "Temperature has an extremely strong positive influence on bread sales.", correct: false, expl: "A high p-value indicates lack of statistical significance." },
+          { text: "Temperature explains 41% of the total variance in bread sold.", correct: false, expl: "The p-value is not R-squared; it measures hypothesis test significance." },
+          { text: "There is no statistically significant relationship between temperature and sales at the alpha = 0.05 level.", correct: true, expl: "Since p = 0.410 > 0.05, we fail to reject the null hypothesis; temperature changes do not reliably predict bread sales." },
+          { text: "The model is invalid and must be completely discarded.", correct: false, expl: "The model can still be valid; this predictor is simply not statistically significant." }
+        ]
+      }
+    ];
+
+    let userAnswers = {};
+
+    function renderExam() {
+      const container = document.getElementById('quiz-list');
+      container.innerHTML = examQuestions.map((q, idx) => `
+        <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm transition" id="q-card-${q.id}">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-[11px] font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full">
+              Question ${idx + 1} &bull; ${q.topic}
+            </span>
+            <span id="q-badge-${q.id}" class="text-xs font-semibold text-slate-400">Unanswered</span>
+          </div>
+          <h3 class="text-sm font-semibold text-slate-900 mb-3">${q.question}</h3>
+          <div class="space-y-2">
+            ${q.options.map((opt, optIdx) => `
+              <button 
+                onclick="handleAnswer(${q.id}, ${optIdx})" 
+                id="q-btn-${q.id}-${optIdx}" 
+                class="w-full text-left p-3 rounded-xl border border-slate-200 text-xs font-medium text-slate-700 hover:bg-slate-50 transition flex items-start gap-2.5">
+                <span class="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center text-[10px] shrink-0 mt-0.5 font-bold">
+                  ${String.fromCharCode(65 + optIdx)}
+                </span>
+                <span>${opt.text}</span>
+              </button>
+            `).join('')}
+          </div>
+          <div id="q-expl-${q.id}" class="hidden mt-3 p-3 rounded-xl text-xs"></div>
+        </div>
+      `).join('');
+    }
+
+    function handleAnswer(qId, optIdx) {
+      if (userAnswers[qId] !== undefined) return;
+      userAnswers[qId] = optIdx;
+
+      const q = examQuestions.find(item => item.id === qId);
+      const isCorrect = q.options[optIdx].correct;
+      const explBox = document.getElementById(`q-expl-${qId}`);
+      const badge = document.getElementById(`q-badge-${qId}`);
+
+      q.options.forEach((opt, idx) => {
+        const btn = document.getElementById(`q-btn-${qId}-${idx}`);
+        btn.disabled = true;
+        btn.classList.remove('hover:bg-slate-50');
+        if (opt.correct) {
+          btn.classList.add('bg-emerald-50', 'border-emerald-300', 'text-emerald-900', 'font-semibold');
+        } else if (idx === optIdx && !isCorrect) {
+          btn.classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
+        }
+      });
+
+      explBox.classList.remove('hidden');
+      if (isCorrect) {
+        explBox.classList.add('bg-emerald-50', 'text-emerald-900', 'border', 'border-emerald-200');
+        explBox.innerHTML = `<strong><i class="fa-solid fa-circle-check text-emerald-600 mr-1"></i> Correct!</strong> ${q.options[optIdx].expl}`;
+        badge.innerHTML = `<span class="text-emerald-600 font-bold"><i class="fa-solid fa-check"></i> Correct</span>`;
+      } else {
+        explBox.classList.add('bg-rose-50', 'text-rose-900', 'border', 'border-rose-200');
+        explBox.innerHTML = `<strong><i class="fa-solid fa-circle-xmark text-rose-600 mr-1"></i> Incorrect.</strong> ${q.options[optIdx].expl}`;
+        badge.innerHTML = `<span class="text-rose-600 font-bold"><i class="fa-solid fa-xmark"></i> Incorrect</span>`;
+      }
+
+      updateExamStats();
+    }
+
+    function updateExamStats() {
+      const answeredCount = Object.keys(userAnswers).length;
+      let correctCount = 0;
+      examQuestions.forEach(q => {
+        if (userAnswers[q.id] !== undefined && q.options[userAnswers[q.id]].correct) {
+          correctCount++;
+        }
+      });
+
+      document.getElementById('exam-progress').innerText = `${answeredCount}/20`;
+      document.getElementById('exam-score').innerText = correctCount;
+      const pct = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+      document.getElementById('exam-percent').innerText = `${pct}%`;
+    }
+
+    function resetExam() {
+      userAnswers = {};
+      renderExam();
+      updateExamStats();
+    }
+
+    function calculateDormBill() {
+      const occ = parseFloat(document.getElementById('calc-occupants').value) || 0;
+      const ac = parseFloat(document.getElementById('calc-aircon').value) || 0;
+      const hrs = parseFloat(document.getElementById('calc-hours').value) || 0;
+
+      const c_occ = 180 * occ;
+      const c_ac = 950 * ac;
+      const c_hrs = 45 * hrs;
+      const total = 320 + c_occ + c_ac + c_hrs;
+
+      document.getElementById('dorm-sub-line').innerText = `= 320.00 + 180.00(${occ}) + 950.00(${ac}) + 45.00(${hrs})`;
+      document.getElementById('dorm-math-line').innerText = `= 320.00 + ${c_occ.toFixed(2)} + ${c_ac.toFixed(2)} + ${c_hrs.toFixed(2)} = PHP ${total.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}`;
+
+      const badge = document.getElementById('dorm-action-badge');
+      if (total >= 2500) {
+        badge.className = "inline-block mt-1 px-2.5 py-0.5 rounded font-bold text-xs bg-rose-600 text-white";
+        badge.innerText = `High usage (PHP ${total.toFixed(0)} >= 2,500) — Send energy-saving notice`;
+      } else if (total >= 1500) {
+        badge.className = "inline-block mt-1 px-2.5 py-0.5 rounded font-bold text-xs bg-amber-500 text-slate-900";
+        badge.innerText = `Moderate usage (PHP ${total.toFixed(0)} is 1,500 to < 2,500) — Include reminder in monthly bulletin`;
+      } else {
+        badge.className = "inline-block mt-1 px-2.5 py-0.5 rounded font-bold text-xs bg-emerald-600 text-white";
+        badge.innerText = `Normal usage (PHP ${total.toFixed(0)} < 1,500) — No action needed`;
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      renderChecklist();
+      renderExam();
+      calculateDormBill();
+    });
+  </script>
+</body>
+</html>
